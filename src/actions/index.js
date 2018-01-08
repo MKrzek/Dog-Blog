@@ -1,4 +1,6 @@
 import * as firebase from 'firebase';
+import {AUTH_USER} from './contants.js';
+
 const config = {
     apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
     authDomain: "dog-blog-50b2a.firebaseapp.com",
