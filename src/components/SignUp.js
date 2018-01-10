@@ -11,8 +11,10 @@ class SignUp extends React.Component {
         const className=`form-group${touched && error ? 'has-danger': ''}`;
         return <fieldset className={className}>
                     <label className='control-label'>{field.label}</label>
-                    <input {...field.input} type='email'/>
-                    <div className='text-help'>
+                    <div>
+                    <input {...field.input} type={field.type}/>
+                    </div>
+                    <div className='help-block'>
                     {touched ? error : ''}
                     </div>
             </fieldset>
@@ -33,7 +35,7 @@ class SignUp extends React.Component {
         const {handleSubmit}=this.props;
 
         return <div className='container'>
-        <div className='col-md-2 col-md-offset-3'>
+        <div className='col-md-6 col-md-offset-3'>
         <h2 className='text-center'> Sign Up</h2>
 
             {this.renderAuthenticationError()}
@@ -63,35 +65,29 @@ class SignUp extends React.Component {
     }
 }
 function validate(values) {
-    console.log(values)
-    const errors = {}
-    
-    if (!values.email){
-        errors.email='Please enter an email.';
-    }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address.';
-    };
-    if (!values.password){
-         errors.password='Please enter a password.';
-    };
-    if (!values.confirmPassword){
-        errors.confirmPassword = 'Please enter a password confirmation.';
-    };
-    if (values.password!==values.confirmPassword){
-        errors.password='Passwords do not match.';
-    };
-
-    console.log (errors)
+    const errors = {};
+    if (!values.email) {
+        errors.email = 'Please enter an email.';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+    }
+    if (!values.password) {
+        errors.password = 'Please enter a password.';
+    }    
+    if (!values.confirmPassword) {
+        errors.confirmPassword = 'Please enter a password confirmation.'
+    }
+    if (values.password !== values.confirmPassword) {
+        errors.password = 'Passwords do not match.'
+    }
     return errors;
-
-}
-
+};
 function mapStateToProps(state){
     return{
         authenticationError: state.auth.error
     }
 }
-export default connect (null, Actions) (reduxForm({
+export default connect (mapStateToProps, Actions) (reduxForm({
     form:'signUp',
     validate: validate
 })(SignUp));

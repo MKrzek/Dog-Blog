@@ -13,21 +13,21 @@ const config = {
     messagingSenderId: "925286955795"
 };
 const firebaseApp=firebase.initializeApp(config);
-export function SignUpUser(values){
+export function SignUpUser(credentials){
      return function (dispatch){
-    firebaseApp.auth().createUserWithEmailAndPassword(values.email, values.password)
+    firebaseApp.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
     .then(response=>{
         dispatch(authUser());
     })
     .catch(error=>{
-        console.log(error)
+        console.log('errror in action', error)
         dispatch(authError(error));
     })
  };
 }
- export function LogInUser(values){
+ export function LogInUser(credentials){
     return function (dispatch){
-    firebaseApp.auth().signInWithEmailAndPassword(values.email, values.password)
+    firebaseApp.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
     .then(response=>{
         dispatch(authUser());
     })
@@ -36,6 +36,31 @@ export function SignUpUser(values){
     })
  }
 }
+export function signOutUser() {
+    return function (dispatch) {
+        firebaseApp.auth().signOut()
+            .then(() => {
+                dispatch({
+                    type: SIGN_OUT_USER
+                })
+            });
+
+    }
+};
+
+export function verifyAuth() {
+    return function (dispatch) {
+        firebaseApp.auth().onAuthStateChanged(user => {
+            if (user) {
+                dispatch(authUser());
+            } else {
+                dispatch(signOutUser());
+            }
+        })
+    }
+};
+
+
  export function authUser(){
      return {
          type: AUTH_USER
@@ -47,8 +72,4 @@ export function SignUpUser(values){
          payload: error
      }
  }
- export function signOutUser(){
-     return {
-         type: SIGN_OUT_USER
-     }
- }
+ 

@@ -9,8 +9,10 @@ class LogIn extends React.Component{
         const className=`form-group${field.meta.touched && field.meta.error ? 'has-danger' : ''}`;
         return <fieldset className= {className}>
                    <label className='control-label'>{field.label}</label>
-                   <input {...field.input} type='email'/>
-                   <div className='text-help'>
+                   <div>
+                   <input {...field.input} type={field.type}/>
+                   </div>
+                   <div className='help-block'>
                    {field.meta.touched ? field.meta.error: ''}
                    </div>
                </fieldset>
@@ -19,7 +21,7 @@ class LogIn extends React.Component{
     }
 
     LogIn=(values)=>{
-        console.log (values);
+        console.log ('credentials', values);
         this.props.LogInUser(values)
     }
 
@@ -34,21 +36,19 @@ class LogIn extends React.Component{
     render(){
         const {handleSubmit}= this.props;
         return <div className='container'>
-                 <div className='col-md-2 col-md-offset-3'>
+                 <div className='col-md-6 col-md-offset-3'>
                  <h2 className='text-center'>Log In</h2>
 
                     {this.renderAuthenticationError()}
                <form onSubmit ={handleSubmit(this.LogIn)}>
-                   <Field
-                        name='email'
+                   <Field name='email'
                         component={this.renderLogin}
                         label='Email'
-                    />
-                    <Field
-                        name='password'
+                         type='text'/>
+                    <Field name='password'
                         component={this.renderLogin}
                         label='Password'
-                    />
+                        type='password'/>
                     <button type='submit' className='btn btn-primary'>Log In</button>
                    
                </form>
@@ -58,11 +58,10 @@ class LogIn extends React.Component{
     }
 }
 function validate(values){
-    console.log (values)
     const errors={}
     if (!values.email){
         errors.email='Please enter a valid email';
-} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+}else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
     errors.email='Invalid email address';
 };
 
@@ -79,7 +78,7 @@ function mapStateToProps(state){
         authenticationError: state.auth.error
     }
 }
-export default connect (null, Actions)(reduxForm({
+export default connect (mapStateToProps, Actions)(reduxForm({
     validate: validate,
     form:'logIn'
 })(LogIn));

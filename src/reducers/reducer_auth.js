@@ -5,6 +5,7 @@ const initialState={
     error: null
 };
 export default function auth (state=initialState, action){
+    console.log ('reducererror', action)
     switch(action.type){
         case AUTH_USER:
             return{
@@ -23,6 +24,7 @@ export default function auth (state=initialState, action){
                 ...state,
                 error: action.payload.message
             };
+            
         default: 
              return state;
 
