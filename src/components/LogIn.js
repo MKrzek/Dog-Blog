@@ -51,7 +51,9 @@ class LogIn extends React.Component{
                         label='Password'
                         type='password'/>
                     <button type='submit' className='btn btn-primary'>Log In</button>
-                   <Link to='/signin'>Not a member Sign In</Link>
+                    <div>
+                   <Link to='/signup' className='btn btn-primary'>Not a member yet? Register now</Link>
+                   </div>
                </form>
                </div>
                </div>

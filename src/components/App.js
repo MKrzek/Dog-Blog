@@ -6,13 +6,19 @@ import {connect} from 'react-redux';
 
 import SignUp from './SignUp.js';
 import LogIn from './LogIn.js';
-import Home from './Home.js'
+import Home from './Home.js';
+import Gallery from './Gallery.js';
+import DogFriendly from './DogFriendly.js';
+import Vets from './Vets.js';
+import Adoption from './Adoption.js';
+
+
 
 const PrivateRoute=({component:Component, authenticated, ...props})=>{
   return (
    <Route {...props} render={(props)=>authenticated===true
                        ? <Component {...props}/>
-                     : <Redirect to={{pathname:'/login', state:{from: props.location}}}/>}
+                     : <Redirect to={{pathname:'/', state:{from: props.location}}}/>}
     />
   )
 };
@@ -31,10 +37,16 @@ class App extends React.Component {
     return (
       <ConnectedRouter history={history}>
         <div className='container'>
-               <PublicRoute authenticated={this.props.authenticated} path='/login' component={LogIn}/>
-               <PublicRoute authenticated={this.props.authenticated} path='/signup' component={SignUp}/>
+               <PublicRoute authenticated = {this.props.authenticated} path = '/signup' component = {SignUp}/>
+               <PublicRoute authenticated={this.props.authenticated} exact path='/' component={LogIn}/>
                <PrivateRoute authenticated={this.props.authenticated} path='/home' component={Home}/>
+               <PrivateRoute authenticated={this.props.authenticated} path='/gallery' component={Gallery}/>
+               <PrivateRoute authenticated = {this.props.authenticated} path = '/vets' component = {Vets}/>
+               <PrivateRoute authenticated ={this.props.authenticated} path='/dog-friendly' component={DogFriendly}/>
+               <PrivateRoute authenticated={this.props.authenticated} path='/adoption' component={Adoption}/>
+
         </div>
+
       </ConnectedRouter>
     );
 
