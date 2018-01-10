@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as Actions from '../actions/index.js';
 
@@ -50,7 +51,7 @@ class LogIn extends React.Component{
                         label='Password'
                         type='password'/>
                     <button type='submit' className='btn btn-primary'>Log In</button>
-                   
+                   <Link to='/signin'>Not a member Sign In</Link>
                </form>
                </div>
                </div>
