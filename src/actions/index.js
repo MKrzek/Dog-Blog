@@ -13,6 +13,7 @@ const config = {
     messagingSenderId: "925286955795"
 };
 const firebaseApp=firebase.initializeApp(config);
+const artDatabase=firebase.database().ref('newArticle')
 
 export function SignUpUser(credentials){
      return function (dispatch){
@@ -71,6 +72,19 @@ export function verifyAuth() {
      return {
          type:AUTH_ERROR,
          payload: error
+     }
+ }
+
+ export function createNewArticle(article){
+     const userUiD=firebase.auth().currentUser.uid;
+     return function (dispatch){
+         artDatabase.push({user: userUiD, title: article.title, content: article.content})
+         .then(response=>{
+             dispatch({
+                 type: NEW_ARTICLE,
+                 payload: article
+             })
+         })
      }
  }
  

@@ -13,15 +13,14 @@ class NewArticle extends React.Component{
             <div>
                 <textarea {...field.input} type={field.type}/>
             </div>
-            <div className='help-block'>
+            <div className='help-text'>
                 {field.meta.touched ? field.meta.error : ''}
             </div>
         </fieldset>
 }
 
     submitNewArticle = (values) => {
-        console.log ('dziala')
-    console.log('newarticle', values)
+       this.props.createNewArticle(values)
 }
 
     render(){
@@ -48,8 +47,9 @@ class NewArticle extends React.Component{
 };
 
 function validate(values){
+    
     const errors={}
-    if (!values.title || values.title.length<3){
+    if (!values.title){
        errors.title='Please enter a title';
     };
     if (!values.content){
