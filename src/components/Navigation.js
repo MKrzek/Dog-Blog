@@ -15,24 +15,26 @@ class Navigation extends React.Component{
                     <div className='navbar-header'>
                         <Link to='/home' className='navbar-brand'>Dogether</Link>
                     </div>
-                    <ul className='nav navbar-nav navbar-right'>
+                    
+                    <ul className='nav navbar-nav navbar-right' id='navig'>
                          <li className='nav-item' key={1}>
                             <Link className='nav-link' to='/gallery'>Gallery</Link>
                         </li>
-                         <li className='nav-item' key={2}>
+                         <li className='nav-item' key={2}> 
                             <Link className='nav-link' to='/dogFriendly'> Dog-Friendly</Link>
                         </li>
                         <li className = 'nav-item'key={3}>
                             <Link className = 'nav-link'to = '/vets'>Vet</Link> 
-                        </li>
+                         </li>
                         <li className = 'nav-item' key={4}>
                             <Link className = 'nav-link' to = '/adoption'>Adoption</Link> 
                         </li>
                         <li className='nav-item' key={5}>
-                            <a className='nav-item' onClick={()=>this.handleSignOut()}>Sign Out</a>
+                            <a  id='signout' className='nav-link' onClick={()=>this.handleSignOut()}>Sign Out</a>
                         </li>
 
                     </ul>
+                   
                    </div>
                 
                 </nav>

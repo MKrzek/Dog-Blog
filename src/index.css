@@ -3,3 +3,11 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+#signout {
+  color: #2196f3;
+  cursor: pointer;
+}
+#navig{
+  display: flex;
+  flex-direction: row;
+}

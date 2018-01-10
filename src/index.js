@@ -5,6 +5,7 @@ import {configureStore} from './store.js';
 import registerServiceWorker from './registerServiceWorker';
 
 import App from './components/App.js';
+import './index.css';
 
 const store=configureStore();
 console.log('store', store)
