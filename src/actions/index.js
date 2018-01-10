@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 import {AUTH_USER} from '../constants.js';
 import {AUTH_ERROR} from '../constants.js';
 import {SIGN_OUT_USER} from '../constants.js';
-
+import {NEW_ARTICLE} from'../constants.js';
 
 const config = {
     apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
