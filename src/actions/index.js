@@ -3,7 +3,7 @@ import {AUTH_USER} from '../constants.js';
 import {AUTH_ERROR} from '../constants.js';
 import {SIGN_OUT_USER} from '../constants.js';
 import {NEW_ARTICLE} from'../constants.js';
-
+import {DISPLAY_ARTICLES} from '../constants.js';
 const config = {
     apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
     authDomain: "dog-blog-50b2a.firebaseapp.com",
@@ -88,3 +88,15 @@ export function verifyAuth() {
      }
  }
  
+export function displayArticles() {
+    return function (dispatch) {
+        artDatabase.on('value', snapshot => {
+            console.log('snapshot', snapshot)
+            dispatch({
+                type: DISPLAY_ARTICLES,
+                payload: snapshot.val(),
+            });
+
+        });
+    }
+};

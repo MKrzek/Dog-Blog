@@ -11,7 +11,7 @@ import Gallery from './Gallery.js';
 import DogFriendly from './DogFriendly.js';
 import Vets from './Vets.js';
 import Adoption from './Adoption.js';
-
+import NewArticle from './NewArticle.js';
 
 
 const PrivateRoute=({component:Component, authenticated, ...props})=>{
@@ -44,6 +44,7 @@ class App extends React.Component {
                <PrivateRoute authenticated = {this.props.authenticated} path = '/vets' component = {Vets}/>
                <PrivateRoute authenticated ={this.props.authenticated} path='/dog-friendly' component={DogFriendly}/>
                <PrivateRoute authenticated={this.props.authenticated} path='/adoption' component={Adoption}/>
+               <PrivateRoute authenticated={this.props.authenticated} path='/newArticle' component={NewArticle}/>
 
         </div>
 

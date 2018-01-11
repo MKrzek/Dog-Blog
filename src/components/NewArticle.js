@@ -1,5 +1,5 @@
 import React from 'react'
-// import Navigation from './Navigation.js';
+ import Navigation from './Navigation.js';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import * as Actions from '../actions/index.js';
@@ -26,6 +26,7 @@ class NewArticle extends React.Component{
     render(){
         const{handleSubmit}=this.props;
         return <div>
+                <Navigation/>
                 <div className='container'>
                     <div  className='col-md-6 col-md-offset-3'>
                         <h2> Add a new article</h2>
