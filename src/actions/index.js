@@ -4,16 +4,20 @@ import {AUTH_ERROR} from '../constants.js';
 import {SIGN_OUT_USER} from '../constants.js';
 import {NEW_ARTICLE} from'../constants.js';
 import {DISPLAY_ARTICLES} from '../constants.js';
+
 const config = {
-    apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
-    authDomain: "dog-blog-50b2a.firebaseapp.com",
-    databaseURL: "https://dog-blog-50b2a.firebaseio.com",
-    projectId: "dog-blog-50b2a",
-    storageBucket: "dog-blog-50b2a.appspot.com",
-    messagingSenderId: "925286955795"
+apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
+authDomain : "dog-blog-50b2a.firebaseapp.com",
+databaseURL : "https://dog-blog-50b2a.firebaseio.com",
+projectId : "dog-blog-50b2a",
+storageBucket : "dog-blog-50b2a.appspot.com",
+messagingSenderId : "925286955795"
 };
+
 const firebaseApp=firebase.initializeApp(config);
-const artDatabase=firebase.database().ref('newArticle')
+const artDatabase=firebase.database().ref('newArticle');
+const storage=firebase.storage().ref();
+
 
 export function SignUpUser(credentials){
      return function (dispatch){
@@ -76,18 +80,23 @@ export function verifyAuth() {
  }
 
  export function createNewArticle(article){
+     const {title, picture, content}=article;
      const userUiD=firebase.auth().currentUser.uid;
+     const id=`${userUiD}${new Date().getTime()}`
      return function (dispatch){
-         artDatabase.push({user: userUiD, title: article.title, content: article.content})
+         storage.child(`images/${id}`).put(picture[0]).then((snapshot)=>{
+         artDatabase.push({id: id, title: title, content: content, picture:snapshot.metadata.downloadURLs[0]})
          .then(response=>{
              dispatch({
                  type: NEW_ARTICLE,
                  payload: article
              })
          })
-     }
+    })
  }
- 
+}
+
+
 export function displayArticles() {
     return function (dispatch) {
         artDatabase.on('value', snapshot => {
