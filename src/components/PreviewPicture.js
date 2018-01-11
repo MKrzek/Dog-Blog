@@ -7,12 +7,13 @@ export default class PreviewPicture extends React.Component{
 
     if (!pictureUrl){
         return <div style={{
-            height: '400px',
+            height: '300px',
             borderStyle:'solid', 
-            borderColor: 'grey'
-        }} className='text-center mb-1'>{picture}</div>
+            borderColor: 'grey',
+            width: '300px',
+        }} className='text-center mt-1 ml-3'>{picture}</div>
     }else{
-       return <img className='img-fluid mb-2 mt-2' src={pictureUrl}/>
+       return <img className='img-fluid mb-5' style={{width: '300px'}} src={pictureUrl}/>
     }
     
    

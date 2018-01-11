@@ -14,13 +14,14 @@ componentDidMount(){
 }
 
  showArticle=()=>{
+     if (this.props.articles){
       for (const key of Object.keys(this.props.articles)){
           console.log (key, this.props.articles[key])
-          this.props.articles[key].id=(key)
-          console.log (this.props.articles)
+          this.props.articles[key].key=(key)    
       }
+    }
         return _.map(this.props.articles, article=>{
-            return <ArticleData article={article} key={article.id}/>
+            return <ArticleData article={article} key={article.key}/>
         })
     }
       
@@ -28,14 +29,21 @@ componentDidMount(){
       
         return <div>
                <Navigation/>
-               <div>
-                   <h2>List of Articles</h2>
+               <div className='container'>
+               <div className='row'>
+                   <h2 className='mb-5 mt-4 ml-2'>List of Articles</h2>
+                   <Link className = 'btn btn-primary mt-4 ml-4' to = '/newArticle' > Add a new Article </Link>
                </div>
-               <div>   
+               </div>
+               <div className='container'>
+               <div className='row'>
                    {this.showArticle()}
                </div>
-               <Link className='btn btn-primary' to='/newArticle'>Add a new Article</Link>
                </div>
+               </div>
+               
+               
+              
                
     
 }

@@ -79,22 +79,21 @@ export function verifyAuth() {
      }
  }
 
- export function createNewArticle(article){
+ export function createNewArticle(article, callback){
      const {title, picture, content}=article;
      const userUiD=firebase.auth().currentUser.uid;
      const id=`${userUiD}${new Date().getTime()}`
      return function (dispatch){
          storage.child(`images/${id}`).put(picture[0]).then((snapshot)=>{
          artDatabase.push({id: id, title: title, content: content, picture:snapshot.metadata.downloadURLs[0]})
-         .then(response=>{
-             dispatch({
+         })
+         callback()
+         dispatch({
                  type: NEW_ARTICLE,
                  payload: article
-             })
-         })
-    })
- }
-}
+             })     
+    }
+};
 
 
 export function displayArticles() {

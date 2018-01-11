@@ -26,9 +26,9 @@ export default class FileField extends React.Component{
         const{label, input}=this.props
         delete input.value
         return <div>
-                <div className='form-group row'>
+                <div className='form-group'>
                     <label className='col-sm-3 col-form-label'>{label}</label>
-                <div>
+                <div className='col-sm-9'>
                    <input 
                       type='file' 
                       className='form-control' 

@@ -12,8 +12,8 @@ class NewArticle extends React.Component{
     renderNewArticle=(field)=>{
         const className=`form-group${field.meta.touched && field.meta.error ? 'has-danger' : ''}`;
         return <fieldset className={className}>
-        <label className = 'col-form-label' > {field.label} </label>
-            <div>
+        <label className = 'col form-label' > {field.label} </label>
+            <div className='col-sm-9'>
                 <textarea {...field.input} type={field.type}/>
             </div>
             <div className='help-text'>
@@ -24,7 +24,9 @@ class NewArticle extends React.Component{
 
     submitNewArticle = (values) => {
         console.log ('newvalues', values)
-       this.props.createNewArticle(values)
+       this.props.createNewArticle(values, ()=>{
+           this.props.history.push('/home')
+       })
 }
 
     render(){
