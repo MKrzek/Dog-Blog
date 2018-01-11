@@ -21,7 +21,7 @@ class SignUp extends React.Component {
 
     }
     SignUp=(values)=>{
-        console.log ('Signupvalues', values);
+        
         this.props.SignUpUser(values);
 
     }

@@ -5,7 +5,7 @@ const initialState={
     error: null
 };
 export default function auth (state=initialState, action){
-    console.log ('action', action.payload)
+    
     switch(action.type){
         case AUTH_USER:
             return{

@@ -45,7 +45,6 @@ class App extends React.Component {
                <PrivateRoute authenticated ={this.props.authenticated} path='/dog-friendly' component={DogFriendly}/>
                <PrivateRoute authenticated={this.props.authenticated} path='/adoption' component={Adoption}/>
                <PrivateRoute authenticated={this.props.authenticated} path='/newArticle' component={NewArticle}/>
-
         </div>
 
       </ConnectedRouter>

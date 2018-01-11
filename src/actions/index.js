@@ -22,7 +22,7 @@ export function SignUpUser(credentials){
         dispatch(authUser());
     })
     .catch(error=>{
-        console.log('errror in action', error)
+        
         dispatch(authError(error));
     })
  };

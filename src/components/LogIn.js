@@ -22,7 +22,7 @@ class LogIn extends React.Component{
     }
 
     LogIn=(values)=>{
-        console.log ('credentials', values);
+        
         this.props.LogInUser(values)
     }
 
