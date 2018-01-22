@@ -3,15 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
 #signout {
   color: #2196f3;
   cursor: pointer;
 }
-#navig{
+
+#navig {
   display: flex;
   flex-direction: row;
 }
-#previewPic{
-  
+
+#previewPic {
   width: '300px';
 }
