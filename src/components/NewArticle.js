@@ -22,7 +22,7 @@ class NewArticle extends React.Component {
   };
 
   submitNewArticle = values => {
-    console.log("newvalues", values);
+    
     this.props.createNewArticle(values, () => {
       this.props.history.push("/home");
     });

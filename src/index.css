@@ -17,3 +17,12 @@ body {
 #previewPic {
   width: '300px';
 }
+.vetItem{
+  width: 150px;
+  height: 200px; 
+  
+}
+.vetElement{
+  display:flex;
+  flex-direction: row;
+}

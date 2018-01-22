@@ -5,6 +5,7 @@ import {SIGN_OUT_USER} from '../constants.js';
 import {NEW_ARTICLE} from'../constants.js';
 import {DISPLAY_ARTICLES} from '../constants.js';
 import {ADD_VET} from '../constants.js';
+import {DISPLAY_VETS} from '../constants.js';
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -102,7 +103,7 @@ export function verifyAuth() {
 export function displayArticles() {
     return function (dispatch) {
         artDatabase.on('value', snapshot => {
-            console.log('snapshot', snapshot)
+            
             dispatch({
                 type: DISPLAY_ARTICLES,
                 payload: snapshot.val(),
@@ -122,5 +123,15 @@ export function addVet(values, callback){
          type: ADD_VET,
          payload: values
      })
+    }
+}
+export function displayVets(){
+    return function (dispatch){
+        vetDatabase.on ('value', snapshot=>{
+            dispatch({
+                type: DISPLAY_VETS,
+                payload: snapshot.val()
+            })
+        })
     }
 }

@@ -15,7 +15,7 @@ class Home extends React.Component {
   showArticle = () => {
     if (this.props.articles) {
       for (const key of Object.keys(this.props.articles)) {
-        console.log(key, this.props.articles[key]);
+        
         this.props.articles[key].key = key;
       }
     }
@@ -31,7 +31,7 @@ class Home extends React.Component {
         <div className="container">
           <div className="row">
             <h2 className="mb-5 mt-4 ml-2">List of Articles</h2>
-            <Link className="btn btn-primary mt-4 ml-4" to="/newArticle">
+            <Link className="btn btn-primary btn-lg mt-4 ml-4" to="/newArticle">
               {" "}
               Add a new Article{" "}
             </Link>
