@@ -144,7 +144,7 @@ export function addDogFriendly(values, callback){
     const {place,tags, description, www}=values;
      const userUiD = firebase.auth().currentUser.uid;
     return function (dispatch){
-        dogFriendlyDatabase.push({ userUiD: userUiD, place: place, tags: [tags], description: description, www: www})
+        dogFriendlyDatabase.push({ userUiD: userUiD, place: place, tags: tags, description: description, www: www})
         callback()
         dispatch({
             type: ADD_DOG_FRIENDLY,

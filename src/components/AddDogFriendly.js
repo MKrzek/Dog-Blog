@@ -1,8 +1,9 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import * as Actions from '../actions/index.js';
 
+
+import * as Actions from '../actions/index.js';
 import Navigation from './Navigation.js';
 
 class AddDogFriendly extends React.Component{
@@ -12,21 +13,39 @@ class AddDogFriendly extends React.Component{
         const {input, type, label, meta: {touched, error}}=field
       
         return <fieldset className={`form-group${touched && error ? 'has-error' : ''}`}>
-                 <label>{label}</label>
                  <div>
-                 <textarea {...input} type={type}/>
+                 <label>{label}</label>
+                 <textarea {...input} type={type} placeholder={label}/>
                  {touched && error && (<div className='alert alert-danger'>{error}</div>)}
                  </div>
                </fieldset>
+}
+
+    dropdownList=(field)=>{
+        const { input, type, label, meta: { touched, error } } = field;
+        const tags=['Restaurant', 'Park', 'Breakfast', 'Cafe'];
+        const className=`form-group${touched && error ? "has-error" : ""}`
+        return <fieldset  className={className}>
+              <div>
+             <label>{label}</label>
+              <select {...input}  type={type}>
+              <option></option>
+                  {tags.map(tag => <option value={tag} key={tag}>{tag} </option>)}
+               </select>
+               {touched && error && (<div className="alert alert-danger">{error}</div>)}
+               </div>
+             </fieldset>
     }
 
    submitForm = values =>{
+       console.log ('values', values)
         this.props.addDogFriendly(values, ()=>{
             this.props.history.push('/dogFriendly')
         })
     }
 
     render(){
+         
         return <div>
                 <Navigation/>
                 <h2>Add a Dog Friendly Place</h2>
@@ -39,8 +58,8 @@ class AddDogFriendly extends React.Component{
                      label='Add a place'/>
                      <Field 
                      name='tags'
-                     type='text'
-                     component={this.renderField}
+                     type='select'
+                     component={this.dropdownList}
                      label='Add tags'/>
                      <Field
                      name='description'
@@ -65,9 +84,9 @@ function validate(values){
 if (!values.place){
     errors.place ='Please enter a name'
 }
-if (!values.tags){
-    errors.tag =' Please enter tags'
-}
+ if (!values.tags){
+ errors.tags =' Please enter tags'
+ }
 if (!values.description){
     errors.description = 'Please enter a description'
 }
@@ -83,4 +102,6 @@ export default connect (null, Actions) (reduxForm ({
 form:'addDogFriendly',
 validate
 }) (AddDogFriendly))
+
+
 
