@@ -6,6 +6,7 @@ import NewArticleReducer from './reducer_newArticle.js';
 import DisplayArticle from './reducer_displayArt.js';
 import AddVet from './reducer_addVet.js';
 import DisplayVets from './reducer_displayVets.js';
+import AddDogFriendly from './reducer_addDogFriendly.js'
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -15,6 +16,7 @@ const rootReducer=combineReducers({
     displayArticle: DisplayArticle,
     newVet: AddVet,
     displayVets: DisplayVets,
+    AddDogFriendly: AddDogFriendly
 
     
 })

@@ -6,6 +6,7 @@ import {NEW_ARTICLE} from'../constants.js';
 import {DISPLAY_ARTICLES} from '../constants.js';
 import {ADD_VET} from '../constants.js';
 import {DISPLAY_VETS} from '../constants.js';
+import {ADD_DOG_FRIENDLY} from '../constants.js'
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -19,6 +20,7 @@ messagingSenderId : "925286955795"
 const firebaseApp=firebase.initializeApp(config);
 const artDatabase=firebase.database().ref('newArticle');
 const vetDatabase=firebase.database().ref('vets');
+const dogFriendlyDatabase=firebase.database().ref('dogFriendly')
 const storage=firebase.storage().ref();
 
 
@@ -132,6 +134,19 @@ export function displayVets(){
                 type: DISPLAY_VETS,
                 payload: snapshot.val()
             })
+        })
+    }
+}
+
+export function addDogFriendly(values, callback){
+    const {place,tags, description, www}=values;
+     const userUiD = firebase.auth().currentUser.uid;
+    return function (dispatch){
+        dogFriendlyDatabase.push({ userUiD: userUiD, place: place, tags: tags, description: description, www: www})
+        callback()
+        dispatch({
+            type: ADD_DOG_FRIENDLY,
+            payload: values
         })
     }
 }

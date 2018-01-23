@@ -5,3 +5,4 @@ export const NEW_ARTICLE='NEW_ARTICLE';
 export const DISPLAY_ARTICLES ='DISPLAY_ARTICLES';
 export const ADD_VET='ADD_VET';
 export const DISPLAY_VETS='DISPLAY_VETS';
+export const ADD_DOG_FRIENDLY ='ADD_DOG_FRIENDLY';
