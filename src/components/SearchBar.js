@@ -9,43 +9,40 @@ class  SearchBar extends React.Component{
         const {input, type, label, meta:{touched, error}} = field
         return <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
             <div>
-              <input {...input} type={type} />
-              {touched && error && <div className="alert alert-danger">
-                    {error}
-                  </div>}
+              <input {...input} type={type} placeholder={label} className='col-md-7' />
+              <button type="submit" className="btn bmd-btn-icon">
+                <i className="material-icons">search</i>
+              </button>
+
+               {touched && error && <div className="alert alert-danger">{error} </div>}
             </div>
           </fieldset>;
     }
-    
+
     submitForm=(values)=>{
         this.props.fetchDfTags(values)
     }
 
     render(){
         return <div>
-                <form onSubmit={this.props.handleSubmit(this.submitForm)}>
-                     <Field 
-                      name='searchBar'
-                      type='text'
-                      label='Enter a query'
-                      component={this.renderField}
-                      />
-                    <button type='submit' className='btn btn-primary'> Submit</button>
-                </form>
-               </div>
+            <form onSubmit={this.props.handleSubmit(this.submitForm)}>
+              <Field name="searchBar" type="text" label="Enter a query" component={this.renderField} />
+            </form>
+          </div>;
     }
 }
 
 function validate(values){
-    const errors={}
-    if (!values.SearchBar){
-        errors.SearchBar='Enter your query'
+    const errors={};
+    if (!values.searchBar){
+        errors.searchBar='Enter your query';   
     }
 
         return errors
-    }
+}
 
 export default connect (null, Actions) (reduxForm({
+    validate,
     form:'searchBar',
-    validate
+    
 }) (SearchBar))

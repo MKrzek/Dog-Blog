@@ -27,10 +27,15 @@ body {
   flex-direction: row;
 }
 .friendlyItem{
-  width: 150px;
-  height: 200px; 
+  /* width: 150px; */
+  height: 200px;  
+
+  
 }
 .friendlyElement{
-  display:flex;
-  flex-direction: row;
+  /* display:flex; */
+  /* flex-direction: wrap */
+  display: inline
+  
+  
 }
