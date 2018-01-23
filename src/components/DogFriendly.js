@@ -6,6 +6,8 @@ import _  from 'lodash';
 
 import DogFriendlyData from './DogFriendlyData.js';
 import Navigation from './Navigation.js';
+import SearchBar from './SearchBar.js';
+
 class DogFriendly extends React.Component {
 
 componentDidMount=()=>{
@@ -18,9 +20,9 @@ showDogFriendly=()=>{
        }
      }
 
-    console.log ('friendly props', this.props.dogFriendly)
+    
     return _.map(this.props.dogFriendly, data=>{
-           console.log ('data frendly', data)
+          
         return <DogFriendlyData key={data.key} data={data}/>
     })
 }
@@ -32,7 +34,10 @@ showDogFriendly=()=>{
               <h2>Dog Friendly Places</h2>
               <Link to='/addDogFriendly' className='btn btn-primary'>Add Dog Friendly Places</Link>
               </div>
-              <div className='mt-5'>
+              <div>
+                   <SearchBar/>
+               </div>
+              <div className=' friendlyElement mt-5'>
                   {this.showDogFriendly()}
               </div>
               </div>
@@ -41,7 +46,7 @@ showDogFriendly=()=>{
     }
 }
 function mapStateToProps(state){
-    console.log ('state dogFriendly', state.displayDogFriendly)
+    
     return{
         dogFriendly: state.displayDogFriendly
         

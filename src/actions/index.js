@@ -8,6 +8,7 @@ import {ADD_VET} from '../constants.js';
 import {DISPLAY_VETS} from '../constants.js';
 import {ADD_DOG_FRIENDLY} from '../constants.js';
 import {DISPLAY_DOG_FRIENDLY} from '../constants.js';
+import {DISPLAY_DFTAGS} from '../constants.js';
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -127,7 +128,7 @@ export function addVet(values, callback){
          payload: values
      })
     }
-}
+};
 export function displayVets(){
     return function (dispatch){
         vetDatabase.on('value', snapshot=>{
@@ -137,20 +138,20 @@ export function displayVets(){
             })
         })
     }
-}
+};
 
 export function addDogFriendly(values, callback){
     const {place,tags, description, www}=values;
      const userUiD = firebase.auth().currentUser.uid;
     return function (dispatch){
-        dogFriendlyDatabase.push({ userUiD: userUiD, place: place, tags: tags, description: description, www: www})
+        dogFriendlyDatabase.push({ userUiD: userUiD, place: place, tags: [tags], description: description, www: www})
         callback()
         dispatch({
             type: ADD_DOG_FRIENDLY,
             payload: values
         })
     }
-}
+};
 
 export function displayDogFriendly(){
     return function (dispatch){
@@ -161,4 +162,21 @@ export function displayDogFriendly(){
             })
         })
     }
-}
+};
+
+export function fetchDfTags(values){
+  const value = values.searchBar;
+  
+  return function (dispatch){
+    dogFriendlyDatabase.orderByChild('tags').equalTo(value).on('value', snapshot=>{
+              
+        
+
+        dispatch({
+            type: DISPLAY_DFTAGS,
+            payload: snapshot.val()
+        })
+    })
+  }
+} 
+

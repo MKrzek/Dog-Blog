@@ -10,27 +10,28 @@ class AddDogFriendly extends React.Component{
 
     renderField=(field)=>{
         const {input, type, label, meta: {touched, error}}=field
+      
         return <fieldset className={`form-group${touched && error ? 'has-error' : ''}`}>
                  <label>{label}</label>
                  <div>
                  <textarea {...input} type={type}/>
-                 
                  {touched && error && (<div className='alert alert-danger'>{error}</div>)}
                  </div>
                </fieldset>
     }
 
-   handleFormSubmit=values=>{
-        this.props.addDogFriendly(values, callback=>{
+   submitForm = values =>{
+        this.props.addDogFriendly(values, ()=>{
             this.props.history.push('/dogFriendly')
         })
     }
+
     render(){
         return <div>
                 <Navigation/>
                 <h2>Add a Dog Friendly Place</h2>
                 <div>
-                    <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
+                    <form onSubmit={this.props.handleSubmit(this.submitForm)}>
                     <Field
                      name='place'
                      type='text'
@@ -58,6 +59,7 @@ class AddDogFriendly extends React.Component{
     }
 
 }
+
 function validate(values){
     const errors = {};
 if (!values.place){
