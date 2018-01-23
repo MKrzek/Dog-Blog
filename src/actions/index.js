@@ -6,7 +6,8 @@ import {NEW_ARTICLE} from'../constants.js';
 import {DISPLAY_ARTICLES} from '../constants.js';
 import {ADD_VET} from '../constants.js';
 import {DISPLAY_VETS} from '../constants.js';
-import {ADD_DOG_FRIENDLY} from '../constants.js'
+import {ADD_DOG_FRIENDLY} from '../constants.js';
+import {DISPLAY_DOG_FRIENDLY} from '../constants.js';
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -129,7 +130,7 @@ export function addVet(values, callback){
 }
 export function displayVets(){
     return function (dispatch){
-        vetDatabase.on ('value', snapshot=>{
+        vetDatabase.on('value', snapshot=>{
             dispatch({
                 type: DISPLAY_VETS,
                 payload: snapshot.val()
@@ -147,6 +148,17 @@ export function addDogFriendly(values, callback){
         dispatch({
             type: ADD_DOG_FRIENDLY,
             payload: values
+        })
+    }
+}
+
+export function displayDogFriendly(){
+    return function (dispatch){
+        dogFriendlyDatabase.on('value', snapshot=>{
+            dispatch({
+                type: DISPLAY_DOG_FRIENDLY,
+                payload: snapshot.val()
+            })
         })
     }
 }
