@@ -43,7 +43,7 @@ class Gallery extends React.Component{
     } 
 }
 function mapStateToProps(state){
-    console.log ('state gallery', state.displayGallery)
+    
     return {
         gallery: state.displayGallery
     }

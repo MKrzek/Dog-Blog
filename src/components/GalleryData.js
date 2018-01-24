@@ -7,19 +7,16 @@ class GalleryData extends React.Component{
     
 
    handleClick=()=>{
-       
        if (this.props.blockVote){
        const votes = this.props.dog.votes;
        let counter= votes + 1;
        const key = this.props.dog.key;
        this.props.addVote(counter, key) 
-
        this.props.castVote(false)
        setTimeout(()=>{
            this.props.castVote(true)
            }, 100000)
-
-        }  
+    }  
 }
 
 

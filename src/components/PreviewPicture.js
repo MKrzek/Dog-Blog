@@ -2,7 +2,6 @@ import React from 'react';
 
 export default class PreviewPicture extends React.Component{
     render(){
-
     const {pictureUrl, picture} = this.props;
 
     if (!pictureUrl){

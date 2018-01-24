@@ -40,7 +40,7 @@ showVets=()=>{
     }
 }
 function mapStateToProps(state){
-    console.log ('vets', state.displayVets)
+    
     return {
         vets: state.displayVets
     }

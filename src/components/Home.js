@@ -15,7 +15,6 @@ class Home extends React.Component {
   showArticle = () => {
     if (this.props.articles) {
       for (const key of Object.keys(this.props.articles)) {
-        
         this.props.articles[key].key = key;
       }
     }

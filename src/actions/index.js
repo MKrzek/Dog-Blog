@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+
 import {AUTH_USER} from '../constants.js';
 import {AUTH_ERROR} from '../constants.js';
 import {SIGN_OUT_USER} from '../constants.js';
@@ -12,7 +13,10 @@ import {DISPLAY_DFTAGS} from '../constants.js';
 import {ADD_GALLERY} from '../constants.js';
 import {DISPLAY_GALLERY} from '../constants.js';
 import {ADD_VOTE} from '../constants.js';
-import {BLOCK_VOTE} from '../constants.js'
+import {BLOCK_VOTE} from '../constants.js';
+import {ADD_ADOPTION} from '../constants.js';
+import {DISPLAY_ADOPTION} from '../constants.js';
+import {RESERVE_DOG} from '../constants.js';
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -27,9 +31,11 @@ const firebaseApp=firebase.initializeApp(config);
 const artDatabase=firebase.database().ref('newArticle');
 const vetDatabase=firebase.database().ref('vets');
 const galleryDatabase =firebase.database().ref('gallery');
-const dogFriendlyDatabase=firebase.database().ref('dogFriendly')
+const dogFriendlyDatabase=firebase.database().ref('dogFriendly');
+const adoptionDatabase=firebase.database().ref('adoption');
 const articleStorage=firebase.storage().ref('articles');
 const galleryStorage=firebase.storage().ref('gallery');
+const adoptionStorage = firebase.storage().ref('adoption');
 
 
 export function SignUpUser(credentials){
@@ -39,7 +45,6 @@ export function SignUpUser(credentials){
         dispatch(authUser());
     })
     .catch(error=>{
-        
         dispatch(authError(error));
     })
  };
@@ -99,7 +104,7 @@ export function verifyAuth() {
      return function (dispatch){
          articleStorage.child(`images/${id}`).put(picture[0])
          .then((snapshot)=>{
-         artDatabase.push({id: id, title: title, content: content, picture:snapshot.metadata.downloadURLs[0]})
+         artDatabase.push({id, userUiD, title, content, picture:snapshot.metadata.downloadURLs[0]})
          })
          callback()
          dispatch({
@@ -112,8 +117,7 @@ export function verifyAuth() {
 
 export function displayArticles() {
     return function (dispatch) {
-        artDatabase.on('value', snapshot => {
-            
+        artDatabase.on('value', snapshot => {       
             dispatch({
                 type: DISPLAY_ARTICLES,
                 payload: snapshot.val(),
@@ -124,10 +128,10 @@ export function displayArticles() {
 };
 
 export function addVet(values, callback){
-    const {vet, streetName, streetNumber, phone, www }=values
+    const {vet, streetName, streetNumber, phone, www }=values;
      const userUiD=firebase.auth().currentUser.uid;
      return function(dispatch){
-         vetDatabase.push({userUiD: userUiD,  vet: vet, streetName: streetName, streetNumber: streetNumber, phone: phone, www: www})
+         vetDatabase.push({userUiD,  vet, streetName, streetNumber, phone, www})
      callback()
      dispatch({
          type: ADD_VET,
@@ -150,7 +154,7 @@ export function addDogFriendly(values, callback){
     const {place,tags, description, www}=values;
      const userUiD = firebase.auth().currentUser.uid;
     return function (dispatch){
-        dogFriendlyDatabase.push({ userUiD: userUiD, place: place, tags: tags, description: description, www: www})
+        dogFriendlyDatabase.push({userUiD, place, tags,  description, www})
         callback()
         dispatch({
             type: ADD_DOG_FRIENDLY,
@@ -172,7 +176,6 @@ export function displayDogFriendly(){
 
 export function fetchDfTags(values){
   const value = values.searchBar;
-  
   return function (dispatch){
     dogFriendlyDatabase.orderByChild('tags').equalTo(value).on('value', snapshot=>{
               
@@ -194,7 +197,7 @@ export function addGallery (values, callback){
     return function (dispatch){
         galleryStorage.child(`images/${id}`).put(picture[0])
         .then ((snapshot)=>{
-            galleryDatabase.push({id: id, votes: votes, name: name, picture:snapshot.metadata.downloadURLs[0]})
+            galleryDatabase.push({id, votes, name, userUiD, picture:snapshot.metadata.downloadURLs[0]})
          })
          callback()
          dispatch({
@@ -229,11 +232,61 @@ export function addVote(counter, key){
 }
      
 
-export function castVote(block){
+export function castVote(voted){
     return (dispatch=>{
         dispatch({
             type: BLOCK_VOTE,
-            payload: block
+            payload: voted
+        })
+    })
+}
+
+export function addAdoption(values, callback){
+    const {name, breed, picture}=values;
+    const userUiD = firebase.auth().currentUser.uid;
+    const id = `${userUiD}${new Date().getTime()}`;
+    return (dispatch=>{
+        adoptionStorage.child(`images/${id}`).put(picture[0])
+        .then(snapshot=>{
+            adoptionDatabase.push({
+               id,
+               name,
+               adoption: 'reserve',
+               breed,
+               userUiD,
+              picture: snapshot.metadata.downloadURLs[0]
+            });
+            callback()
+            dispatch({
+                type: ADD_ADOPTION,
+                payload: values
+            })
+
+        })
+    })
+
+}
+
+export function displayAdoption(){
+    return (dispatch=>{
+        adoptionDatabase.on('value', snapshot=>{
+            
+            dispatch({
+                type: DISPLAY_ADOPTION,
+                payload: snapshot.val()
+            })
+        })
+    })
+}
+
+export function reserveDog(data, key){
+     return ((dispatch)=>{
+        adoptionDatabase.child(key).update({
+            "adoption": data
+        })
+        dispatch({
+            type: RESERVE_DOG,
+            payload: data
         })
     })
 }
