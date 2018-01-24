@@ -11,6 +11,8 @@ import DisplayDogFriendly from './reducer_displayDogFriendly.js';
 import AddGallery from './reducer_addGallery.js';
 import DisplayGallery from './reducer_displayGallery.js';
 import AddVote from './reducer_addVote.js';
+import BlockVote from './reducer_blockVote.js';
+
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -25,7 +27,8 @@ const rootReducer=combineReducers({
     addGallery: AddGallery,
     displayGallery: DisplayGallery,
     addVote: AddVote,
-
+    blockVote: BlockVote
+   
     
 })
 export default rootReducer;

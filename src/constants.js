@@ -11,3 +11,4 @@ export const DISPLAY_DFTAGS ='DISPLAY_DFTAGS';
 export const ADD_GALLERY = 'ADD_GALLERY';
 export const DISPLAY_GALLERY ='DISPLAY_GALLERY';
 export const ADD_VOTE ='ADD_VOTE';
+export const BLOCK_VOTE='BLOCK_VOTE'

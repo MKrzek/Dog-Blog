@@ -11,7 +11,8 @@ import {DISPLAY_DOG_FRIENDLY} from '../constants.js';
 import {DISPLAY_DFTAGS} from '../constants.js';
 import {ADD_GALLERY} from '../constants.js';
 import {DISPLAY_GALLERY} from '../constants.js';
-import {ADD_VOTE} from '../constants.js'
+import {ADD_VOTE} from '../constants.js';
+import {BLOCK_VOTE} from '../constants.js'
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -226,4 +227,13 @@ export function addVote(counter, key){
         })
     })
 }
-        
+     
+
+export function castVote(block){
+    return (dispatch=>{
+        dispatch({
+            type: BLOCK_VOTE,
+            payload: block
+        })
+    })
+}
