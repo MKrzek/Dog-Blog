@@ -4,11 +4,15 @@ import * as Actions from "../actions/index.js";
 import { connect } from "react-redux";
 
 class AdoptionData extends React.Component {
+  
   handleClick = () => {
     const data = "reserved";
     const key = this.props.dog.key;
     this.props.reserveDog(data, key);
+    const dog=this.props.dog
+    this.props.onDogSelect(dog);
   };
+
 
   render() {
     console.log("reserve", this.props.dog.adoption);
@@ -27,5 +31,6 @@ class AdoptionData extends React.Component {
     );
   }
 }
+
 
 export default connect(null, Actions)(AdoptionData);

@@ -15,3 +15,5 @@ export const BLOCK_VOTE='BLOCK_VOTE';
 export const ADD_ADOPTION='ADD_ADOPTION';
 export const DISPLAY_ADOPTION ='DISPLAY_ADOPTION';
 export const RESERVE_DOG ='RESERVE_DOG';
+export const OPEN_MODAL ='OPEN_MODAL';
+export const CLOSE_MODAL ='CLOSE_MODAL';

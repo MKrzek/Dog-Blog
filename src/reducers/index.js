@@ -15,6 +15,7 @@ import BlockVote from './reducer_blockVote.js';
 import AddAdoption from './reducer_addAdoption.js';
 import DisplayAdoption from './reducer_displayAdoption.js';
 import ReserveDog from './reducer_reserveDog.js';
+import ModalReducer from './reducer_modal.js';
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -33,6 +34,7 @@ const rootReducer=combineReducers({
     addAdoption: AddAdoption,
     displayAdoption: DisplayAdoption,
     reserveDog: ReserveDog,
+    modal: ModalReducer,
     
 })
 export default rootReducer;

@@ -17,6 +17,8 @@ import { BLOCK_VOTE } from "../constants.js";
 import { ADD_ADOPTION } from "../constants.js";
 import { DISPLAY_ADOPTION } from "../constants.js";
 import { RESERVE_DOG } from "../constants.js";
+import {OPEN_MODAL} from "../constants.js";
+import {CLOSE_MODAL} from "../constants.js";
 
 const config = {
   apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -303,4 +305,22 @@ export function reserveDog(data, key) {
       payload: data
     });
   };
+}
+
+export function openModal(dog){
+  return dispatch=>{
+    dispatch({
+      type:OPEN_MODAL,
+      payload: dog
+    })
+}
+}
+
+export function closeModal (){
+  return dispatch=>{
+    dispatch({
+      type: CLOSE_MODAL,
+      
+    })
+  }
 }
