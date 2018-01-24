@@ -1,4 +1,4 @@
-import {DISPLAY_ADOPTION} from '../constants.js';
+import {DISPLAY_ADOPTION} from "../constants.js";
 export default function (state=[], action){
     
     switch(action.type){

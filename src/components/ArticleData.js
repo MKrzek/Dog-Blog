@@ -6,7 +6,7 @@ export default class ArticleData extends React.Component {
     return (
       <div className="ml-3">
         <div>
-          <h4 className='text-justify'>Title: {title}</h4>
+          <h4 className="text-justify">Title: {title}</h4>
         </div>
         <div>
           <div>Content: {content}</div>

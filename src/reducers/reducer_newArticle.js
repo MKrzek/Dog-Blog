@@ -1,4 +1,4 @@
-import {NEW_ARTICLE} from '../constants.js';
+import {NEW_ARTICLE} from "../constants.js";
 
 export default function  article (state=[], action){
     

@@ -12,10 +12,10 @@ import DogFriendly from "./DogFriendly.js";
 import Vets from "./Vets.js";
 import Adoption from "./Adoption.js";
 import NewArticle from "./NewArticle.js";
-import AddVet from './AddVet.js';
-import AddDogFriendly from './AddDogFriendly.js';
-import AddGallery from './AddGallery.js';
-import AddAdoption from './AddAdoption.js';
+import AddVet from "./AddVet.js";
+import AddDogFriendly from "./AddDogFriendly.js";
+import AddGallery from "./AddGallery.js";
+import AddAdoption from "./AddAdoption.js";
 
 const PrivateRoute = ({ component: Component, authenticated, ...props }) => {
   return (
@@ -93,25 +93,26 @@ class App extends React.Component {
             component={NewArticle}
           />
           <PrivateRoute
-           authenticated={this.props.authenticated}
-           path='/addVet'
-           component={AddVet}
-           />
-          <PrivateRoute
-          authenticated={this.props.authenticated}
-          path='/addDogFriendly'
-          component={AddDogFriendly}
+            authenticated={this.props.authenticated}
+            path="/addVet"
+            component={AddVet}
           />
-           <PrivateRoute
-           authenticated={this.props.authenticated} 
-            path ='/addGallery' 
-           component={AddGallery}
-           />
-           <PrivateRoute
-           authenticated={this.props.authenticated}
-           path='/addForAdoption'
-           component={AddAdoption}/>
-           </div>
+          <PrivateRoute
+            authenticated={this.props.authenticated}
+            path="/addDogFriendly"
+            component={AddDogFriendly}
+          />
+          <PrivateRoute
+            authenticated={this.props.authenticated}
+            path="/addGallery"
+            component={AddGallery}
+          />
+          <PrivateRoute
+            authenticated={this.props.authenticated}
+            path="/addForAdoption"
+            component={AddAdoption}
+          />
+        </div>
       </ConnectedRouter>
     );
   }

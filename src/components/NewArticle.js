@@ -15,7 +15,7 @@ class NewArticle extends React.Component {
         <label className="control-label"> {field.label} </label>
         <div className="form-control">
           <textarea {...field.input} type={field.type} />
-         {field.meta.touched && field.meta.error && <div className='alert alert-danger'>{field.meta.error}</div>}
+         {field.meta.touched && field.meta.error && <div className="alert alert-danger">{field.meta.error}</div>}
         </div>
       </fieldset>
     );
