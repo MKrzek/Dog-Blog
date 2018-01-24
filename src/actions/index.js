@@ -9,7 +9,8 @@ import {DISPLAY_VETS} from '../constants.js';
 import {ADD_DOG_FRIENDLY} from '../constants.js';
 import {DISPLAY_DOG_FRIENDLY} from '../constants.js';
 import {DISPLAY_DFTAGS} from '../constants.js';
-import {ADD_GALLERY} from '../constants.js'
+import {ADD_GALLERY} from '../constants.js';
+import {DISPLAY_GALLERY} from '../constants.js'
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -25,7 +26,7 @@ const artDatabase=firebase.database().ref('newArticle');
 const vetDatabase=firebase.database().ref('vets');
 const galleryDatabase =firebase.database().ref('gallery');
 const dogFriendlyDatabase=firebase.database().ref('dogFriendly')
-const storage=firebase.storage().ref('articles');
+const articleStorage=firebase.storage().ref('articles');
 const galleryStorage=firebase.storage().ref('gallery');
 
 
@@ -94,7 +95,7 @@ export function verifyAuth() {
      const userUiD=firebase.auth().currentUser.uid;
      const id=`${userUiD}${new Date().getTime()}`
      return function (dispatch){
-         storage.child(`images/${id}`).put(picture[0])
+         articleStorage.child(`images/${id}`).put(picture[0])
          .then((snapshot)=>{
          artDatabase.push({id: id, title: title, content: content, picture:snapshot.metadata.downloadURLs[0]})
          })
@@ -200,5 +201,14 @@ export function addGallery (values, callback){
     }
 };
 
-
+export function displayGallery(){
+    return ((dispatch)=>{
+        galleryDatabase.on('value', snapshot=>{
+            dispatch({
+                type: DISPLAY_GALLERY,
+                payload: snapshot.val()
+            })
+        })
+    })
+}
         
