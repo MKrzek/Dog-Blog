@@ -10,7 +10,8 @@ import {ADD_DOG_FRIENDLY} from '../constants.js';
 import {DISPLAY_DOG_FRIENDLY} from '../constants.js';
 import {DISPLAY_DFTAGS} from '../constants.js';
 import {ADD_GALLERY} from '../constants.js';
-import {DISPLAY_GALLERY} from '../constants.js'
+import {DISPLAY_GALLERY} from '../constants.js';
+import {ADD_VOTE} from '../constants.js'
 
 const config = {
 apiKey : "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -188,10 +189,11 @@ export function addGallery (values, callback){
     const {name, picture}=values
     const userUiD = firebase.auth().currentUser.uid;
     const id = `${userUiD}${new Date().getTime()}`;
+    const votes = 0
     return function (dispatch){
         galleryStorage.child(`images/${id}`).put(picture[0])
         .then ((snapshot)=>{
-            galleryDatabase.push({id: id, name: name, picture:snapshot.metadata.downloadURLs[0]})
+            galleryDatabase.push({id: id, votes: votes, name: name, picture:snapshot.metadata.downloadURLs[0]})
          })
          callback()
          dispatch({
@@ -208,6 +210,19 @@ export function displayGallery(){
                 type: DISPLAY_GALLERY,
                 payload: snapshot.val()
             })
+        })
+    })
+}
+
+export function addVote(counter, key){
+    return ((dispatch)=>{
+        galleryDatabase.child(key).update({
+            "votes": counter
+        })
+        dispatch({
+            type: ADD_VOTE,
+            payload: counter
+
         })
     })
 }

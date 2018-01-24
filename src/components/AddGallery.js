@@ -41,6 +41,7 @@ class AddGallery extends React.Component{
                           type='text'
                           label="Your pet's name"
                           component={this.renderForm}/>
+                          
                         <button className='btn btn-primary' type='submit'>Submit</button>
                      </form>
 
