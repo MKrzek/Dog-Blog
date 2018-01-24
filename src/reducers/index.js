@@ -8,6 +8,7 @@ import AddVet from './reducer_addVet.js';
 import DisplayVets from './reducer_displayVets.js';
 import AddDogFriendly from './reducer_addDogFriendly.js';
 import DisplayDogFriendly from './reducer_displayDogFriendly.js';
+import AddGallery from './reducer_addGallery.js'
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -19,6 +20,7 @@ const rootReducer=combineReducers({
     displayVets: DisplayVets,
     addDogFriendly: AddDogFriendly,
     displayDogFriendly: DisplayDogFriendly,
+    addGallery: AddGallery,
 
     
 })

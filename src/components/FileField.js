@@ -23,7 +23,7 @@ export default class FileField extends React.Component{
 
 
     render(){
-        const{label, input}=this.props
+        const{label, input, meta:{touched, error}}=this.props
         delete input.value
         return <div>
                 <div className='form-group'>
@@ -36,6 +36,7 @@ export default class FileField extends React.Component{
                       onChange={(event)=>{
                           this.displayPicture(event)}}/>
                  </div>
+                  
                </div>
                     <PreviewPicture pictureUrl = {this.state.pictureUrl} picture={this.state.picture}/>
                </div>

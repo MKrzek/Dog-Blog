@@ -9,7 +9,7 @@ class  SearchBar extends React.Component{
         const {input, type, label, meta:{touched, error}} = field
         return <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
             <div>
-              <input {...input} type={type} placeholder={label} className='col-md-7' />
+              <input {...input} type={type} placeholder={label} className='col-md-7 text-lowercase' />
               <button type="submit" className="btn bmd-btn-icon">
                 <i className="material-icons">search</i>
               </button>
@@ -21,6 +21,7 @@ class  SearchBar extends React.Component{
 
     submitForm=(values)=>{
         this.props.fetchDfTags(values)
+        values.searchBar='';
     }
 
     render(){
