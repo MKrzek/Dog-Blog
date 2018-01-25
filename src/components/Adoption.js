@@ -41,7 +41,8 @@ class Adoption extends React.Component {
           <h2>Adopt a dog</h2>
           <Link to="/addForAdoption">Add a dog</Link>
         </div>
-        <div>{this.showData()}</div>
+        
+        <div className='row'>{this.showData()}</div>
         <div>
           <DogModal  modalIsOpen={this.props.modalIsOpen}
                      selectedDog={this.props.selectedDog}

@@ -1,20 +1,23 @@
 import React from "react";
 import Modal from "react-modal";
 import PreviewPicture from "./PreviewPicture.js";
-
+import ModalForm from './ModalForm.js';
 export default class DogModal extends React.Component {
+
   render() {
     if (!this.props.selectedDog) {
       return <div />;
     } else {
-      const { name, picture} = this.props.selectedDog;
+      const { name, picture, userUiD} = this.props.selectedDog;
+      console.log ('seleceddog', this.props.selectedDog)
+      console.log ('userUiD', this.props.selectedDog.userUiD)
       const customStyle = {
         overlay: {
           position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          top: '75px',
+          left: '150px',
+          right: '150px',
+          bottom: '75px',
           backgroundColor: "rgba(255, 255, 255, 0.75)"
         },
         content: {
@@ -29,7 +32,7 @@ export default class DogModal extends React.Component {
           WebkitOverflowScrolling: "touch",
           borderRadius: "4px",
           outline: "none",
-          padding: "20px"
+          padding: "10px"
         }
       };
       return <Modal isOpen={this.props.modalIsOpen} onRequestClose={() => this.props.onRequestClose()} ariaHideApp={false} style={customStyle}>
@@ -38,14 +41,15 @@ export default class DogModal extends React.Component {
               <PreviewPicture pictureUrl={picture} alt={name} />
             </div>
             <div>{name}</div>
-            <div className="text-center mt-2">
-              <button className="btn btn-primary mb-3" onClick={() => this.props.onRequestClose()}>
+            <div className="text-center mt-1">
+              <ModalForm onRequestClose={this.props.onRequestClose} ownerUiD={userUiD}/>
+              <button className="btn btn-primary mb-2" onClick={() => this.props.onRequestClose()}>
                 close
               </button>
             </div>
             <div />
           </div>
-        </Modal>;
+        </Modal>
     }
   }
 }

@@ -19,6 +19,7 @@ import { DISPLAY_ADOPTION } from "../constants.js";
 import { RESERVE_DOG } from "../constants.js";
 import {OPEN_MODAL} from "../constants.js";
 import {CLOSE_MODAL} from "../constants.js";
+import {SEND_ADOPTION_MESSAGE} from '../constants.js'
 
 const config = {
   apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -35,6 +36,8 @@ const vetDatabase = firebase.database().ref("vets");
 const galleryDatabase = firebase.database().ref("gallery");
 const dogFriendlyDatabase = firebase.database().ref("dogFriendly");
 const adoptionDatabase = firebase.database().ref("adoption");
+const adoptionMessageDatabase= firebase.database().ref('adoptionMessage');
+
 const articleStorage = firebase.storage().ref("articles");
 const galleryStorage = firebase.storage().ref("gallery");
 const adoptionStorage = firebase.storage().ref("adoption");
@@ -323,4 +326,20 @@ export function closeModal (){
       
     })
   }
+}
+
+
+export function adoptMessage (values, ownerUiD){
+  const {name, phone, message}=values;
+  const userUiD = firebase.auth().currentUser.uid;
+  const data={values, ownerUiD, userUiD};
+  console.log ('send data', data)
+  return (dispatch=>{
+    adoptionMessageDatabase.push({userUiD, ownerUiD, name, phone, message})
+    dispatch({
+      type: SEND_ADOPTION_MESSAGE,
+      payload: data
+    })
+  })
+ 
 }
