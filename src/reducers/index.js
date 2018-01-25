@@ -17,6 +17,7 @@ import DisplayAdoption from './reducer_displayAdoption.js';
 import ReserveDog from './reducer_reserveDog.js';
 import ModalReducer from './reducer_modal.js';
 import SendAdoptionMessage from './reducer_sendAdoptMessage.js';
+import DisplayMessages from './reducer_displayMessages.js';
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -37,6 +38,7 @@ const rootReducer=combineReducers({
     reserveDog: ReserveDog,
     modal: ModalReducer,
     sendAdoptMessage: SendAdoptionMessage,
+    displayMessages: DisplayMessages,
     
 })
 export default rootReducer;

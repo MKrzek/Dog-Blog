@@ -19,7 +19,8 @@ import { DISPLAY_ADOPTION } from "../constants.js";
 import { RESERVE_DOG } from "../constants.js";
 import {OPEN_MODAL} from "../constants.js";
 import {CLOSE_MODAL} from "../constants.js";
-import {SEND_ADOPTION_MESSAGE} from '../constants.js'
+import {SEND_ADOPTION_MESSAGE} from '../constants.js';
+import {DISPLAY_MESSAGES} from '../constants.js';
 
 const config = {
   apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -299,8 +300,6 @@ export function displayAdoption() {
 }
 
 export function reserveDog(data, key) {
-  console.log ('dataW Akcji', data);
-  console.log ('key w akcji', key)
   return dispatch => {
     adoptionDatabase.child(key).update({
       adoption: data
@@ -335,7 +334,7 @@ export function adoptMessage (values, ownerUiD){
   const {name, phone, message}=values;
   const userUiD = firebase.auth().currentUser.uid;
   const data={values, ownerUiD, userUiD};
-  console.log ('send data', data)
+  
   return (dispatch=>{
     adoptionMessageDatabase.push({userUiD, ownerUiD, name, phone, message})
     dispatch({
@@ -343,5 +342,19 @@ export function adoptMessage (values, ownerUiD){
       payload: data
     })
   })
- 
+}
+
+export function displayMessages(){
+  const userUiD=firebase.auth().currentUser.uid;
+  return (dispatch=>{
+
+    adoptionMessageDatabase.orderByChild('ownerUiD').equalTo(userUiD).on('value', snapshot=>{
+      
+      dispatch({
+        type: DISPLAY_MESSAGES,
+        payload: snapshot.val()
+      })
+    })
+
+  })
 }
