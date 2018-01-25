@@ -8,9 +8,8 @@ export default class DogModal extends React.Component {
     if (!this.props.selectedDog) {
       return <div />;
     } else {
-      const { name, picture, userUiD} = this.props.selectedDog;
-      console.log ('seleceddog', this.props.selectedDog)
-      console.log ('userUiD', this.props.selectedDog.userUiD)
+      const { name, picture, userUiD, key} = this.props.selectedDog;
+
       const customStyle = {
         overlay: {
           position: "fixed",
@@ -42,7 +41,7 @@ export default class DogModal extends React.Component {
             </div>
             <div>{name}</div>
             <div className="text-center mt-1">
-              <ModalForm onRequestClose={this.props.onRequestClose} ownerUiD={userUiD}/>
+              <ModalForm onRequestClose={this.props.onRequestClose} ownerUiD={userUiD} dog={this.props.selectedDog}/>
               <button className="btn btn-primary mb-2" onClick={() => this.props.onRequestClose()}>
                 close
               </button>

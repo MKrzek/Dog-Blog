@@ -28,8 +28,11 @@ class ModalForm extends React.Component{
     }
 
     submitForm=(values)=>{
-         this.props.adoptMessage(values, this.props.ownerUiD)
+        const data = "reserved";
+        const key = this.props.dog.key;
+        this.props.adoptMessage(values, this.props.ownerUiD)
         this.props.onRequestClose()
+        this.props.reserveDog(data, key)
     }
 
 

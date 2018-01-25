@@ -299,6 +299,8 @@ export function displayAdoption() {
 }
 
 export function reserveDog(data, key) {
+  console.log ('dataW Akcji', data);
+  console.log ('key w akcji', key)
   return dispatch => {
     adoptionDatabase.child(key).update({
       adoption: data
