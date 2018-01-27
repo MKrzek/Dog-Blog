@@ -56,6 +56,11 @@ class AddVet extends React.Component {
               component={this.renderField}
             />
             <Field
+            name="city"
+            label="City name"
+            type="text"
+            component={this.renderField}/>
+            <Field
               name="phone"
               label="Phone number"
               type="number"
@@ -98,6 +103,9 @@ function validate(values) {
   }
   if (!values.wwww) {
     errors.wwww = "Please enter a valid website address";
+  }
+  if (!values.city){
+    errors.city ="Please enter a city";
   }
 
   return errors;

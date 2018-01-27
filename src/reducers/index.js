@@ -18,6 +18,7 @@ import ReserveDog from './reducer_reserveDog.js';
 import ModalReducer from './reducer_modal.js';
 import SendAdoptionMessage from './reducer_sendAdoptMessage.js';
 import DisplayMessages from './reducer_displayMessages.js';
+import VetLocation from './reducer_vetLocation.js';
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -39,6 +40,7 @@ const rootReducer=combineReducers({
     modal: ModalReducer,
     sendAdoptMessage: SendAdoptionMessage,
     displayMessages: DisplayMessages,
+    vetLocation: VetLocation,
     
 })
 export default rootReducer;

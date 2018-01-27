@@ -21,6 +21,7 @@ import {OPEN_MODAL} from "../constants.js";
 import {CLOSE_MODAL} from "../constants.js";
 import {SEND_ADOPTION_MESSAGE} from '../constants.js';
 import {DISPLAY_MESSAGES} from '../constants.js';
+import {VET_LOCATION} from '../constants.js';
 
 const config = {
   apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -143,10 +144,10 @@ export function displayArticles() {
 }
 
 export function addVet(values, callback) {
-  const { vet, streetName, streetNumber, phone, www } = values;
+  const { vet, streetName, streetNumber, phone, www, city } = values;
   const userUiD = firebase.auth().currentUser.uid;
   return function(dispatch) {
-    vetDatabase.push({ userUiD, vet, streetName, streetNumber, phone, www });
+    vetDatabase.push({ userUiD, vet, streetName, streetNumber, phone, www, city });
     callback();
     dispatch({
       type: ADD_VET,
@@ -357,4 +358,19 @@ export function displayMessages(){
     })
 
   })
+}
+
+export function vetLocation(address){
+ 
+  return  (dispatch=>{
+      
+            dispatch({
+           type: VET_LOCATION,
+           payload: address
+});
+
+       })
+       
+      
+  
 }
