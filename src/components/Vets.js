@@ -23,13 +23,12 @@ class Vets extends React.Component {
   };
 
   vetLocation=(address)=>{
-
     this.props.vetLocation(address)
   }
 
 
   render() {
-    console.log('propsy vetowe', this.props.vetAddress)
+    
     return <div>
         <Navigation />
         <div className="container">
@@ -41,7 +40,9 @@ class Vets extends React.Component {
           </div>
           <div className="vetElement row mt-3">{this.showVets()}</div>
           <div>
-            <GoogleMap vetAddress={this.props.vetAddress} />
+            <GoogleMap vetAddress={this.props.vetAddress[2]} 
+                        lat={this.props.vetAddress[0]}
+                         lng={this.props.vetAddress[1]} />
           </div>
         </div>
       </div>;
@@ -51,7 +52,6 @@ function mapStateToProps(state) {
   console.log ('address w vetach', state.vetLocation)
   return {
     vets: state.displayVets,
-
     vetAddress: state.vetLocation
   };
 }
