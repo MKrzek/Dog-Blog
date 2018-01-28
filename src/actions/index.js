@@ -360,13 +360,13 @@ export function displayMessages(){
   })
 }
 
-export function vetLocation(address){
+export function vetLocation(geoLocation){
  
   return  (dispatch=>{
       
             dispatch({
            type: VET_LOCATION,
-           payload: address
+           payload: geoLocation
 });
 
        })
