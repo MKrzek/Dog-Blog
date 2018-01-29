@@ -13,6 +13,7 @@ export  class GoogleMap extends React.Component {
           };
         }
         
+     
         
           
          onMarkerClick = (props, marker, e) => {
@@ -43,9 +44,13 @@ export  class GoogleMap extends React.Component {
            const style = { width: "60%", height: "50%", position: "relative" };
         
           
-           return <Map google={this.props.google} zoom={5} style={style} initialCenter={{ lat: 54.98046410000001||this.props.lat, lng: -1.616564799999992 || this.props.lng} //className="mx-auto mt-5"
-               } onClick={this.onMapClick}>
-               <Marker title={this.props.vetAddress} name={this.props.vetAddress} position={{ lat: lat, lng: lng }} onClick={this.onMarkerClick} />
+           return <Map className={'map'} google={this.props.google} zoom={14} style={style} onClick={this.onMapClick}
+                 centerAroundCurrentLocation={true} 
+                 center={{ lat: lat, lng: lng }}>
+                <Marker title={this.props.vetAddress} 
+                        name={this.props.vetAddress} 
+                        position={{ lat: lat, lng: lng }} 
+                        onClick={this.onMarkerClick} />
                <InfoWindow visible={this.state.showingInfoWindow} marker={this.state.activeMarker}>
                  <h1>{this.props.vetAddress}</h1>
                </InfoWindow>
