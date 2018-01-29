@@ -21,8 +21,8 @@ export default class PreviewPicture extends React.Component {
     } else {
       return (
         <img
-          className="img-fluid mb-3"
-          style={{ width: "300px" }}
+          className="img-fluid mb-2 mt-2"
+          style={{ height: "300px"}}
           src={pictureUrl}
           alt={picture}
         />

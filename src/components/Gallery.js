@@ -30,7 +30,7 @@ class Gallery extends React.Component {
       <div>
         <Navigation />
         <div className="container">
-          <div className="row">
+          <div className="row mt-3 mb-3">
             <h2>Dog Gallery</h2>
             <Link className="btn btn-primary" to="/addGallery">
               Add your pet

@@ -9,17 +9,17 @@ export default class MyArticleData extends React.Component {
    }
 
   render() {
-    const { title, content, picture } = this.props.myArticle;
+    const { title, picture } = this.props.myArticle;
     return (
-      <div className=" card ml-3">
+      <div className=" card mr-2 ml-2">
         <div>
-          <h4 className="text-justify">Title: {title}</h4>
+          <h4 className="text-center mt-2">Title: {title}</h4>
         </div>
         
-        <div>
+        <div className='text-center'>
           <PreviewPicture pictureUrl={picture} />
         </div>
-        <button onClick={this.handleClick} className='btn btn-alert'>Remove This Article</button>
+        <button onClick={this.handleClick} className='btn btn-alert mb-2'>Remove This Article</button>
       </div>
     );
   }

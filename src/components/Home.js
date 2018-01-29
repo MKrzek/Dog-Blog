@@ -4,10 +4,13 @@ import { connect } from "react-redux";
 import * as Actions from "../actions/index.js";
 import _ from "lodash";
 
+
 import Navigation from "./Navigation.js";
 import ArticleData from "./ArticleData.js";
+import HomeGallery from './HomeGallery.js';
 
 class Home extends React.Component {
+
   componentDidMount() {
     this.props.displayArticles();
   }
@@ -29,15 +32,16 @@ class Home extends React.Component {
         <Navigation />
         <div className="container">
           <div className="row">
-            <h2 className="mb-5 mt-4 ml-2">List of Articles</h2>
-            <Link className="btn btn-primary btn-lg mt-4 ml-4" to="/newArticle">
-              {" "}
-              Add a new Article{" "}
-            </Link>
+            <h2 className="mb-2 mt-4 ml-2 text-center">Latest Articles</h2>
+            <Link className="btn btn-primary btn-lg mt-2" to="/newArticle">Add a new Article</Link>
           </div>
         </div>
         <div className="container">
           <div className="row">{this.showArticle()}</div>
+        </div>
+        <div className='mt-4, mb-4'>
+          <h2 className='mb-2 mt-2 text-center'>Gallery</h2>
+           <HomeGallery/> 
         </div>
       </div>
     );

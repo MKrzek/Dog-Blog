@@ -6,12 +6,12 @@ export default class ArticleData extends React.Component {
     return (
       <div className="card ml-3">
         <div>
-          <h4 className="text-justify">Title: {title}</h4>
+          <h4 className="text-justify mt-2 ml-2 mr-2">Title: {title}</h4>
         </div>
         <div>
-          <div>Content: {content}</div>
+          <div className='ml-2 mr-2'>Content: {content}</div>
         </div>
-        <div>
+        <div className='mb-2 ml-2 mr-2' >
           <PreviewPicture pictureUrl={picture} />
         </div>
       </div>

@@ -20,8 +20,8 @@ class GalleryData extends React.Component {
   render() {
     const { name, picture, votes } = this.props.dog;
     return (
-      <div className="col-md-4 card ml-3 mr-2 text-center  mb-2 mt-2 galleryItem">
-        <div className="mt-2">
+      <div className="col-md-4 card ml-2 mr-2 text-center mb-2 mt-2 galleryItem">
+        <div className="mt-3">
           <PreviewPicture pictureUrl={picture} />
         </div>
         <p>{name}</p>

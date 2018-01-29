@@ -27,8 +27,7 @@ class DogFriendly extends React.Component {
     });
   };
   render() {
-    return (
-      <div>
+    return <div>
         <Navigation />
         <div className="container">
           <div className="row">
@@ -38,15 +37,12 @@ class DogFriendly extends React.Component {
             </Link>
           </div>
           <div>
+            <button onClick={this.showAllData} className="btn btn-primary">Search All Places</button>
             <SearchBar />
-            <button onClick={this.showAllData} className="btn btn-primary">
-              Search All Places
-            </button>
           </div>
           <div className="row mt-5">{this.showDogFriendly()}</div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 function mapStateToProps(state) {
