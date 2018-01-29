@@ -5,17 +5,12 @@ export  class GoogleMap extends React.Component {
          constructor(props) {
            super(props);
            this.state = { 
-            
             showingInfoWindow: false, 
             activeMarker: {},
             selectedPlace: {}, 
           
           };
         }
-        
-     
-        
-          
          onMarkerClick = (props, marker, e) => {
            this.setState({
              selectedPlace: props,
@@ -39,13 +34,17 @@ export  class GoogleMap extends React.Component {
            console.log ('lat google', this.props.lat)
            console.log('lng w google', this.props.lng)
            console.log('addres w google', this.props.vetAddress)
-          
-           
+           if (!this.props.google){
+                return <div>Loading...</div>
+           }
+            
+        
            const style = { width: "60%", height: "50%", position: "relative" };
         
           
-           return <Map className={'map'} google={this.props.google} zoom={14} style={style} onClick={this.onMapClick}
+           return <Map className={'map'} google={this.props.google} zoom={18} style={style} onClick={this.onMapClick}
                  centerAroundCurrentLocation={true} 
+                 
                  center={{ lat: lat, lng: lng }}>
                 <Marker title={this.props.vetAddress} 
                         name={this.props.vetAddress} 

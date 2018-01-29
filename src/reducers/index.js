@@ -19,6 +19,9 @@ import ModalReducer from './reducer_modal.js';
 import SendAdoptionMessage from './reducer_sendAdoptMessage.js';
 import DisplayMessages from './reducer_displayMessages.js';
 import VetLocation from './reducer_vetLocation.js';
+import DeleteMessage from './reducer_deleteMessage.js';
+import DisplayMyArticles from './reducer_myArticles.js';
+import DeleteMyArticle from './reducer_deleteMyArticle.js';
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -41,6 +44,9 @@ const rootReducer=combineReducers({
     sendAdoptMessage: SendAdoptionMessage,
     displayMessages: DisplayMessages,
     vetLocation: VetLocation,
+    deleteMessage: DeleteMessage,
+    myArticles: DisplayMyArticles,
+    deleteMyArticle: DeleteMyArticle
     
 })
 export default rootReducer;

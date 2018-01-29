@@ -11,20 +11,23 @@ class Messages extends React.Component{
         this.props.displayMessages()
     }
 
+    deleteMessage=(key)=>{
+        this.props.deleteMessage(key)
+    }
+
     showMessages=()=>{
         if (this.props.messages){
               for (const key of Object.keys(this.props.messages)) {
                 this.props.messages[key].key = key;
               }
-            }
-
+            
+        }
         return _.map(this.props.messages, message=>{
-           return <MessageData message={message} key={message.key}/>
+           return <MessageData message={message} key={message.key} deleteMessage={this.deleteMessage}/>
+        
         })
+    
     }
-
-
-
     
     render(){
         return<div className='container'>

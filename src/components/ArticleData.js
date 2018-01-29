@@ -4,7 +4,7 @@ export default class ArticleData extends React.Component {
   render() {
     const { title, content, picture } = this.props.article;
     return (
-      <div className="ml-3">
+      <div className="card ml-3">
         <div>
           <h4 className="text-justify">Title: {title}</h4>
         </div>

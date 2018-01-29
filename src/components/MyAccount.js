@@ -1,11 +1,19 @@
 import React from 'react';
 import Navigation from './Navigation.js';
 import Messages from './Messages.js';
+import MyArcticles from './MyArticles.js';
 export default class MyAccount extends React.Component{
     render(){
         return <div>
                 <Navigation/>
+                <div>
+                  <h2 className='text-center mt-2 mb-2'>Messages</h2>
                 <Messages/>
+               </div>
+               <div>
+                   <h2 className='text-center mt-2 mb-2'>Articles</h2>
+                   <MyArcticles/>  
+                </div>
                </div>
     }
 }

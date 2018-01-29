@@ -17,11 +17,14 @@ import { BLOCK_VOTE } from "../constants.js";
 import { ADD_ADOPTION } from "../constants.js";
 import { DISPLAY_ADOPTION } from "../constants.js";
 import { RESERVE_DOG } from "../constants.js";
-import {OPEN_MODAL} from "../constants.js";
-import {CLOSE_MODAL} from "../constants.js";
-import {SEND_ADOPTION_MESSAGE} from '../constants.js';
-import {DISPLAY_MESSAGES} from '../constants.js';
-import {VET_LOCATION} from '../constants.js';
+import { OPEN_MODAL } from "../constants.js";
+import { CLOSE_MODAL } from "../constants.js";
+import { SEND_ADOPTION_MESSAGE } from "../constants.js";
+import { DISPLAY_MESSAGES } from "../constants.js";
+import { VET_LOCATION } from "../constants.js";
+import { DELETE_MESSAGE } from "../constants.js";
+import { DISPLAY_MY_ARTICLES } from "../constants.js";
+import { DELETE_MY_ARTICLE } from "../constants.js";
 
 const config = {
   apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -38,7 +41,7 @@ const vetDatabase = firebase.database().ref("vets");
 const galleryDatabase = firebase.database().ref("gallery");
 const dogFriendlyDatabase = firebase.database().ref("dogFriendly");
 const adoptionDatabase = firebase.database().ref("adoption");
-const adoptionMessageDatabase= firebase.database().ref('adoptionMessage');
+const adoptionMessageDatabase = firebase.database().ref("adoptionMessage");
 
 const articleStorage = firebase.storage().ref("articles");
 const galleryStorage = firebase.storage().ref("gallery");
@@ -147,7 +150,15 @@ export function addVet(values, callback) {
   const { vet, streetName, streetNumber, phone, www, city } = values;
   const userUiD = firebase.auth().currentUser.uid;
   return function(dispatch) {
-    vetDatabase.push({ userUiD, vet, streetName, streetNumber, phone, www, city });
+    vetDatabase.push({
+      userUiD,
+      vet,
+      streetName,
+      streetNumber,
+      phone,
+      www,
+      city
+    });
     callback();
     dispatch({
       type: ADD_VET,
@@ -312,65 +323,89 @@ export function reserveDog(data, key) {
   };
 }
 
-export function openModal(dog){
-  return dispatch=>{
+export function openModal(dog) {
+  return dispatch => {
     dispatch({
-      type:OPEN_MODAL,
+      type: OPEN_MODAL,
       payload: dog
-    })
-}
+    });
+  };
 }
 
-export function closeModal (){
-  return dispatch=>{
+export function closeModal() {
+  return dispatch => {
     dispatch({
-      type: CLOSE_MODAL,
-      
-    })
-  }
+      type: CLOSE_MODAL
+    });
+  };
 }
 
-
-export function adoptMessage (values, ownerUiD){
-  const {name, phone, message}=values;
+export function adoptMessage(values, ownerUiD) {
+  const { name, phone, message } = values;
   const userUiD = firebase.auth().currentUser.uid;
-  const data={values, ownerUiD, userUiD};
-  
-  return (dispatch=>{
-    adoptionMessageDatabase.push({userUiD, ownerUiD, name, phone, message})
+  const data = { values, ownerUiD, userUiD };
+
+  return dispatch => {
+    adoptionMessageDatabase.push({ userUiD, ownerUiD, name, phone, message });
     dispatch({
       type: SEND_ADOPTION_MESSAGE,
       payload: data
-    })
-  })
+    });
+  };
 }
 
-export function displayMessages(){
-  const userUiD=firebase.auth().currentUser.uid;
-  return (dispatch=>{
-
-    adoptionMessageDatabase.orderByChild('ownerUiD').equalTo(userUiD).on('value', snapshot=>{
-      
-      dispatch({
-        type: DISPLAY_MESSAGES,
-        payload: snapshot.val()
-      })
-    })
-
-  })
+export function displayMessages() {
+  const userUiD = firebase.auth().currentUser.uid;
+  return dispatch => {
+    adoptionMessageDatabase
+      .orderByChild("ownerUiD")
+      .equalTo(userUiD)
+      .on("value", snapshot => {
+        dispatch({
+          type: DISPLAY_MESSAGES,
+          payload: snapshot.val()
+        });
+      });
+  };
 }
 
-export function vetLocation(geoLocation){
- 
-  return  (dispatch=>{
-      
-            dispatch({
-           type: VET_LOCATION,
-           payload: geoLocation
-});
+export function vetLocation(geoLocation) {
+  return dispatch => {
+    dispatch({
+      type: VET_LOCATION,
+      payload: geoLocation
+    });
+  };
+}
 
-       })
-       
-      
-  
+export function deleteMessage(key) {
+  return dispatch => {
+    adoptionMessageDatabase.child(key).remove();
+    dispatch({
+      type: DELETE_MESSAGE
+    });
+  };
+}
+
+export function displayMyArticles() {
+  const userUiD = firebase.auth().currentUser.uid;
+  return dispatch => {
+    artDatabase
+      .orderByChild("userUiD")
+      .equalTo(userUiD)
+      .on("value", snapshot => {
+        dispatch({
+          type: DISPLAY_MY_ARTICLES,
+          payload: snapshot.val()
+        });
+      });
+  };
+}
+export function deleteArticle(key) {
+  return dispatch => {
+    artDatabase.child(key).remove();
+    dispatch({
+      type: DELETE_MY_ARTICLE
+    });
+  };
 }
