@@ -17,6 +17,7 @@ import AddDogFriendly from "./AddDogFriendly.js";
 import AddGallery from "./AddGallery.js";
 import AddAdoption from "./AddAdoption.js";
 import MyAccount from "./MyAccount.js";
+import ArticleData from './ArticleData.js';
 
 const PrivateRoute = ({ component: Component, authenticated, ...props }) => {
   return (
@@ -117,6 +118,11 @@ class App extends React.Component {
           authenticated={this.props.authenticated}
           path="/myAccount"
           component={MyAccount}
+          />
+          <PrivateRoute
+          authenticated={this.props.authenticated}
+          path='/articleData/:id'
+          component={ArticleData}
           />
         </div>
       </ConnectedRouter>

@@ -22,6 +22,7 @@ import VetLocation from './reducer_vetLocation.js';
 import DeleteMessage from './reducer_deleteMessage.js';
 import DisplayMyArticles from './reducer_myArticles.js';
 import DeleteMyArticle from './reducer_deleteMyArticle.js';
+import SendDataToArticleData from './reducer_sendDataToArticleData.js';
 
 const rootReducer=combineReducers({
     form: FormReducer,
@@ -46,7 +47,8 @@ const rootReducer=combineReducers({
     vetLocation: VetLocation,
     deleteMessage: DeleteMessage,
     myArticles: DisplayMyArticles,
-    deleteMyArticle: DeleteMyArticle
+    deleteMyArticle: DeleteMyArticle,
+    sendDataToArticleData: SendDataToArticleData
     
 })
 export default rootReducer;

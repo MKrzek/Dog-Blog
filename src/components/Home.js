@@ -6,7 +6,7 @@ import _ from "lodash";
 
 
 import Navigation from "./Navigation.js";
-import ArticleData from "./ArticleData.js";
+import ArticlePreview from "./ArticlePreview.js";
 import HomeGallery from './HomeGallery.js';
 
 class Home extends React.Component {
@@ -22,7 +22,7 @@ class Home extends React.Component {
       }
     }
     return _.map(this.props.articles, article => {
-      return <ArticleData article={article} key={article.key} />;
+      return <ArticlePreview article={article} key={article.key}/>;
     });
   };
 
@@ -37,7 +37,7 @@ class Home extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="row">{this.showArticle()}</div>
+          <div className="row justify-content-center">{this.showArticle()}</div>
         </div>
         <div className='mt-4, mb-4'>
           <h2 className='mb-2 mt-2 text-center'>Gallery</h2>

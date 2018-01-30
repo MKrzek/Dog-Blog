@@ -25,6 +25,7 @@ import { VET_LOCATION } from "../constants.js";
 import { DELETE_MESSAGE } from "../constants.js";
 import { DISPLAY_MY_ARTICLES } from "../constants.js";
 import { DELETE_MY_ARTICLE } from "../constants.js";
+import { SEND_DATA_TO_ARTICLE_DATA} from '../constants.js';
 
 const config = {
   apiKey: "AIzaSyAW2Ju7jK7YGKn0qZtmCp7u7dTB2lvgJCs",
@@ -408,4 +409,13 @@ export function deleteArticle(key) {
       type: DELETE_MY_ARTICLE
     });
   };
+}
+export function  SendDataToArticleData(article) {
+  
+  return dispatch=>{
+    dispatch({
+      type: SEND_DATA_TO_ARTICLE_DATA,
+      payload: article
+    })
+  }
 }

@@ -116,3 +116,12 @@ body {
 .homeGalleryData{
     height: 300px;
 }
+
+.titleArticlePreview{
+   color: white;
+   font-weight: bold;
+   display: none;
+}
+h4:hover{
+    display: block;
+}
