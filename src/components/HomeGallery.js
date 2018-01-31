@@ -13,7 +13,7 @@ class HomeGallery extends React.Component{
   }
 
 renderGallery=()=>{
-  console.log ('propsy', this.props.photos)
+  
   if (this.props.photos) {
     for (const key of Object.keys(this.props.photos)) {
       this.props.photos[key].key = key;
@@ -33,7 +33,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  //variableWidth: true,
+  responsive: [{breakpoint: 450, settings: {slidesToShow: 1}}],
   slidesToShow: 3,
   slidesToScroll: 1}
 

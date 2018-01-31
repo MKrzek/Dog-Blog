@@ -11,16 +11,18 @@ class ArticlePreview extends React.Component {
     // this.props.history.push(`/articleData/${this.props.article.key}`)
     this.props.SendDataToArticleData(this.props.article)
   }
+
+
   render() {
     const {title, picture} = this.props.article;
     return <div className="card ml-3 mb-3 mt-3">
         <div className="text-center">
-          <h4 style={{ position: "absolute", top: "40%" }} className="mt-2 ml-2 mr-2 text-uppercase titleArticlePreview">
+          <h4 style={{ position: "absolute", top: '40%'}} className="titlePreview mt-2 ml-2 mr-2 text-uppercase justify-content-center">
             {title}
           </h4>
         </div>
         <Link to={`/articleData/${this.props.article.key}`} onClick={this.handleClick}>
-          <div>
+          <div className="picturePreview">
             <PreviewPicture pictureUrl={picture} />
           </div>
         </Link>
@@ -30,3 +32,4 @@ class ArticlePreview extends React.Component {
 }
 
 export default connect (null, Actions) (ArticlePreview)
+

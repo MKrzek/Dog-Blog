@@ -1,7 +1,5 @@
 import React from "react";
-
 import PreviewPicture from "./PreviewPicture.js";
-
 
 export default class HomeGalleryData extends React.Component { 
   render() {

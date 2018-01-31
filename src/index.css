@@ -117,11 +117,35 @@ body {
     height: 300px;
 }
 
-.titleArticlePreview{
+.titlePreview{
    color: white;
    font-weight: bold;
-   display: none;
+   /* visibility: hidden; */
+   
 }
-h4:hover{
-    display: block;
+
+.picturePreview:hover{
+    opacity: 0.75; 
+    
+}
+
+/* Navbar */
+
+body{
+    padding-top: 80px;
+}
+.navbar-default{
+    background-color: white;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+     width:100%; 
+}
+@media (max-width: 450px){
+.navbar-default{
+    display: none    
+}
+body{
+    padding-top: 10px
+}
 }
