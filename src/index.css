@@ -9,11 +9,6 @@ body {
   cursor: pointer;
 }
 
-#navig {
-  display: flex;
-  flex-direction: row;
-}
-
 #previewPic {
   width: '300px';
 }
@@ -131,21 +126,14 @@ body {
 
 /* Navbar */
 
-body{
-    padding-top: 80px;
-}
-.navbar-default{
-    background-color: white;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-     width:100%; 
-}
-@media (max-width: 450px){
-.navbar-default{
-    display: none    
-}
-body{
-    padding-top: 10px
-}
-}
+
+/* .navbar-collapse{ */
+    /* background-color: white; */
+    /* overflow: hidden; */
+    /* position: fixed; */
+    /* top: 0; */
+     /* width:100%;  */
+/* } */
+
+
+
