@@ -9,10 +9,12 @@ class  SearchBar extends React.Component{
         const {input, type, label, meta:{touched, error}} = field
         return <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
             <div>
-              <input {...input} type={type} placeholder={label} className='col-md-7 text-lowercase' />
+                <div className='row justify-content-center'>
+              <input {...input} type={type} placeholder={label} className='col-md-7 form-control text-lowercase' />
               <button type="submit" className="btn bmd-btn-icon">
                 <i className="material-icons">search</i>
               </button>
+              </div>
 
                {touched && error && <div className="alert alert-danger">{error} </div>}
             </div>

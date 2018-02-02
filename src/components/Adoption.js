@@ -41,7 +41,7 @@ class Adoption extends React.Component {
         <div className='container mt-3 mb-4'>
            <div className='row justify-content-center'>
           <h2 className='text-center'>Adopt a dog</h2>
-          <Link to="/addForAdoption">Add a dog</Link>
+          <Link to="/addForAdoption" className='btn btn-lg ml-3 btn-primary'>Add a dog</Link>
         </div>
         
         <div className='row justify-content-center mt-4'>{this.showData()}</div>

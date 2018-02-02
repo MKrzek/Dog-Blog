@@ -22,13 +22,12 @@ export default class FileField extends React.Component {
   };
 
   render() {
-    const { label, input, meta: { touched, error } } = this.props;
+    const { input, meta: { touched, error } } = this.props;
     delete input.value;
     return (
       <div>
         <div className="form-group">
-          <label className="col-sm-3 col-form-label">{label}</label>
-          <div className="col-sm-9">
+          <div className='mb-4'>
             <input
               type="file"
               className="form-control"

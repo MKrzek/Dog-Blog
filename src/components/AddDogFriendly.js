@@ -12,7 +12,7 @@ class AddDogFriendly extends React.Component {
     return (
       <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
         <div>
-          <label className="label-control">{label}</label>
+          
           <textarea {...input} type={type} placeholder={label} 
              className='form-control'/>
           {touched &&
@@ -29,7 +29,7 @@ class AddDogFriendly extends React.Component {
     return (
       <fieldset className={className}>
         <div>
-          <label className='label-control'>{label}</label>
+          
           <select {...input} type={type} 
            >
             <option />
@@ -57,14 +57,14 @@ class AddDogFriendly extends React.Component {
     return <div>
         <Navigation />
         <div className="container">
-          <h2 className='mt-5 text-center'>Add a Dog Friendly Place</h2>
+          <h2 className='mt-5 mb-5 text-center'>Add a Dog Friendly Place</h2>
           <div className="col-md-6 col-md-offset-3 mx-auto">
             <form onSubmit={this.props.handleSubmit(this.submitForm)}>
               <Field name="place" type="text" component={this.renderField} label="Add a place" />
               <Field name="tags" type="select" component={this.dropdownList} label="Add tags" />
               <Field name="description" type="text" component={this.renderField} label="Add description" />
               <Field name="www" type="text" component={this.renderField} label="Add a website" />
-              <button type="submit">Submit</button>
+              <button className='btn btn-primary btn-lg' type="submit">Submit</button>
             </form>
           </div>
         </div>

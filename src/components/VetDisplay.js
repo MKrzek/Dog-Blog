@@ -33,7 +33,7 @@ export default class VetDisplay extends React.Component{
     render(){
         
         const {vet, streetName, streetNumber, www, phone, city} = this.props.vet
-        return <div className='col-md-4 card ml-3 mr-2 mb-4 text-center vetItem'>
+        return <div className='col-md-4 ml-1 mr-1 card mb-4 text-center vetItem'>
                     
                     
                     <h3 className='mb-1 mt-3'>{vet}</h3>

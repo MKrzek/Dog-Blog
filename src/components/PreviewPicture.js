@@ -13,7 +13,7 @@ export default class PreviewPicture extends React.Component {
             borderColor: "grey",
             width: "300px"
           }}
-          className="text-center mt-1 ml-3"
+          className="text-center mt-3 ml-3 mb-3"
         >
           {picture}
         </div>
