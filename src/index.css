@@ -126,14 +126,24 @@ body {
 
 /* Navbar */
 
+body{
+    padding-top: 65px;
+}
 
-/* .navbar-collapse{ */
-    /* background-color: white; */
-    /* overflow: hidden; */
-    /* position: fixed; */
-    /* top: 0; */
-     /* width:100%;  */
-/* } */
+.navbar-light{
+    background-color: white;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+     width:100%; 
+}
+
+@media(min-width: 992px){
+.navbar-collapse{
+    display:flex;
+    justify-content: flex-end;
+}
+}
 
 
 

@@ -23,11 +23,11 @@ class AdoptionData extends React.Component {
         <div className="mt-4">
             <PreviewPicture pictureUrl={picture} />
         </div>
-        <div>{name}</div>
+        <div className='mt-3'>{name}</div>
         <div className="mb-1">{breed}</div>
-        <button className="mb-3 btn btn-primary" onClick={this.handleClick}>
-          {adoption}
-        </button>
+       
+          <button className="mb-5 mt-4 btn btn-primary" onClick={this.handleClick}>{adoption}</button>
+        
       </div>
     );
   }

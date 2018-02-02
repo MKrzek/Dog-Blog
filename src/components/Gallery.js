@@ -36,7 +36,6 @@ class Gallery extends React.Component {
               Add your pet
             </Link>
           </div>
-
           <div className="row galleryElement">{this.showGallery()}</div>
         </div>
       </div>

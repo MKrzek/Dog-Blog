@@ -7,6 +7,7 @@ import _ from "lodash";
 import Navigation from "./Navigation.js";
 import ArticlePreview from "./ArticlePreview.js";
 import HomeGallery from "./HomeGallery.js";
+import Footer from "./Footer.js";
 
 class Home extends React.Component {
   componentDidMount() {
@@ -36,10 +37,13 @@ class Home extends React.Component {
             </Link>
           </div>
           <div className="row justify-content-center">{this.showArticle()}</div>
-          <div className="mt-4, mb-4">
+          <div className="mt-4 mb-5">
             <h2 className="mb-2 mt-2 text-center">Gallery</h2>
             <HomeGallery />
           </div>
+        </div>
+        <div>
+          <Footer/>
         </div>
       </div>
     );

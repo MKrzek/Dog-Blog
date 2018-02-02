@@ -24,14 +24,11 @@ class Messages extends React.Component{
         }
         return _.map(this.props.messages, message=>{
            return <MessageData message={message} key={message.key} deleteMessage={this.deleteMessage}/>
-        
         })
-    
     }
-    
     render(){
         return<div className='container'>
-                {this.props.messages ? (<div className='row  justify-content-center'>{this.showMessages()}</div>) : (<div className='alert alert-info'>'You have no messages'</div>)}
+                {this.props.messages ? (<div className='row  mt-3 justify-content-center'>{this.showMessages()}</div>) : (<div className='alert alert-info'>'You have no messages'</div>)}
               </div>
     }
 }

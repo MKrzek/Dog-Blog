@@ -39,8 +39,8 @@ class LogIn extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="container">
-        <div className="col-md-6 col-md-offset-3">
+      <div className="container text-center">
+        <div className="col-md-12 col-md-offset-3">
           <h2 className="text-center">Log In</h2>
 
           {this.renderAuthenticationError()}

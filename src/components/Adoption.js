@@ -6,6 +6,7 @@ import _ from "lodash";
 import Navigation from "./Navigation.js";
 import AdoptionData from "./AdoptionData.js";
 import DogModal from './DogModal.js';
+import Footer from './Footer.js';
 
 class Adoption extends React.Component {
 
@@ -37,7 +38,8 @@ class Adoption extends React.Component {
     return (
       <div>
         <Navigation />
-        <div>
+        <div className='container mt-3 mb-4'>
+           <div className='row'>
           <h2>Adopt a dog</h2>
           <Link to="/addForAdoption">Add a dog</Link>
         </div>
@@ -47,6 +49,10 @@ class Adoption extends React.Component {
           <DogModal  modalIsOpen={this.props.modalIsOpen}
                      selectedDog={this.props.selectedDog}
                      onRequestClose={this.closeModal}/>
+        </div>
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     );
