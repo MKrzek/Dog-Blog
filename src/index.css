@@ -144,6 +144,9 @@ body{
     justify-content: flex-end;
 }
 }
+.container{
+    min-height: 82.5vh
+}
 
 
 

@@ -9,7 +9,7 @@ class ModalForm extends React.Component{
         const {input, type, label, meta:{touched, error}}=field;
         const className=`form-group${touched && error ? 'has-error' : ''}`;
         return <fieldset className={className}>
-                   <input {...input} type={type} placeholder={label} className='col-10'/>
+                   <input {...input} type={type} placeholder={label} className='form-control'/>
                    {touched && error && (<div className='alert alert-danger'>{error}</div>)}
                </fieldset>
 }
@@ -19,7 +19,7 @@ class ModalForm extends React.Component{
         const className = `form-group${touched && error ? "has-error" : ""}`;
         return <fieldset className={className}>
             
-            <textarea {...input} type={type} placeholder={label} className='col-10' />
+            <textarea {...input} type={type} placeholder={label} className='form-control' />
             {touched && error && <div className="alert alert-danger">
                   {error}
                 </div>}
@@ -37,7 +37,7 @@ class ModalForm extends React.Component{
 
 
     render(){
-        return <div className='text-center'>
+        return <div className='text-center col-md-6 col-md-offset-3 mx-auto'>
             <form onSubmit={this.props.handleSubmit(this.submitForm)}>
               <Field type="text" name="name" label="Enter your name and surname" component={this.renderInput} />
               <Field type="text" name="phone" label="Enter your phone number" component={this.renderInput} />

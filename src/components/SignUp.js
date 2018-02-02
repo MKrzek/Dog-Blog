@@ -11,7 +11,7 @@ class SignUp extends React.Component {
       <fieldset className={className}>
         <label className="control-label">{field.label}</label>
         <div>
-          <input {...field.input} type={field.type} />
+          <input className='form-control' {...field.input} type={field.type} />
         </div>
         <div className="help-block">{touched ? error : ""}</div>
       </fieldset>
@@ -35,7 +35,7 @@ class SignUp extends React.Component {
 
     return (
       <div className="container">
-        <div className="col-md-6 col-md-offset-3">
+        <div className='col-md-6 col-md-offset-3 mx-auto'>
           <h2 className="text-center"> Sign Up</h2>
 
           {this.renderAuthenticationError()}

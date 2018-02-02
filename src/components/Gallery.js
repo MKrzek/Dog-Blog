@@ -7,6 +7,7 @@ import _ from "lodash";
 
 import Navigation from "./Navigation.js";
 import GalleryData from "./GalleryData.js";
+import Footer from './Footer.js';
 
 class Gallery extends React.Component {
   componentDidMount() {
@@ -30,13 +31,21 @@ class Gallery extends React.Component {
       <div>
         <Navigation />
         <div className="container">
-          <div className="row mt-3 mb-3">
-            <h2>Dog Gallery</h2>
-            <Link className="btn btn-primary" to="/addGallery">
+            <div className='text-center'>
+            <Link className="btn btn-primary text-center btn-lg mb-3 mt-5" to="/addGallery">
               Add your pet
             </Link>
+            </div>
+          
+          <div className="row justify-content-center mb-5">
+                 {this.showGallery()}
+                 
           </div>
-          <div className="row galleryElement">{this.showGallery()}</div>
+          </div>
+         
+        
+        <div>
+          <Footer/>
         </div>
       </div>
     );

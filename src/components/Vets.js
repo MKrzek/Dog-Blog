@@ -1,10 +1,12 @@
 import React from "react";
-import Navigation from "./Navigation.js";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as Actions from "../actions/index.js";
+
+import Navigation from "./Navigation.js";
 import VetDisplay from "./VetDisplay.js";
 import GoogleMap from "./GoogleMap.js";
+import Footer from './Footer.js';
 import _ from "lodash";
 
 class Vets extends React.Component {
@@ -39,13 +41,16 @@ class Vets extends React.Component {
             </Link>
           </div>
           <div className="vetElement row mt-3">{this.showVets()}</div>
-          <div>
+          <div className='mb-4'>
             <GoogleMap vetAddress={this.props.vetAddress[2]} 
                         lat={this.props.vetAddress[0]}
                          lng={this.props.vetAddress[1]} />
           </div>
         </div>
-      </div>;
+        <div>
+          <Footer/>
+        </div>
+      </div>
   }
 }
 function mapStateToProps(state) {

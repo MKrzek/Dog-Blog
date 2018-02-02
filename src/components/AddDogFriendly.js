@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import * as Actions from "../actions/index.js";
 import Navigation from "./Navigation.js";
+import Footer from './Footer.js';
 
 class AddDogFriendly extends React.Component {
   renderField = field => {
@@ -11,8 +12,9 @@ class AddDogFriendly extends React.Component {
     return (
       <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
         <div>
-          <label className="form-control">{label}</label>
-          <textarea {...input} type={type} placeholder={label} />
+          <label className="label-control">{label}</label>
+          <textarea {...input} type={type} placeholder={label} 
+             className='form-control'/>
           {touched &&
             error && <div className="alert alert-danger">{error}</div>}
         </div>
@@ -27,8 +29,9 @@ class AddDogFriendly extends React.Component {
     return (
       <fieldset className={className}>
         <div>
-          <label>{label}</label>
-          <select {...input} type={type}>
+          <label className='label-control'>{label}</label>
+          <select {...input} type={type} 
+           >
             <option />
             {tags.map(tag => (
               <option value={tag} key={tag}>
@@ -51,41 +54,24 @@ class AddDogFriendly extends React.Component {
   };
 
   render() {
-    return (
-      <div>
+    return <div>
         <Navigation />
-        <h2>Add a Dog Friendly Place</h2>
-        <div className="col-md-6 col-md-offset-3">
-          <form onSubmit={this.props.handleSubmit(this.submitForm)}>
-            <Field
-              name="place"
-              type="text"
-              component={this.renderField}
-              label="Add a place"
-            />
-            <Field
-              name="tags"
-              type="select"
-              component={this.dropdownList}
-              label="Add tags"
-            />
-            <Field
-              name="description"
-              type="text"
-              component={this.renderField}
-              label="Add description"
-            />
-            <Field
-              name="www"
-              type="text"
-              component={this.renderField}
-              label="Add a website"
-            />
-            <button type="submit">Submit</button>
-          </form>
+        <div className="container">
+          <h2 className='mt-5 text-center'>Add a Dog Friendly Place</h2>
+          <div className="col-md-6 col-md-offset-3 mx-auto">
+            <form onSubmit={this.props.handleSubmit(this.submitForm)}>
+              <Field name="place" type="text" component={this.renderField} label="Add a place" />
+              <Field name="tags" type="select" component={this.dropdownList} label="Add tags" />
+              <Field name="description" type="text" component={this.renderField} label="Add description" />
+              <Field name="www" type="text" component={this.renderField} label="Add a website" />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+        <div>
+          <Footer />
+        </div>
+      </div>;
   }
 }
 

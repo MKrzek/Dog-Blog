@@ -7,6 +7,7 @@ import _ from "lodash";
 import DogFriendlyData from "./DogFriendlyData.js";
 import Navigation from "./Navigation.js";
 import SearchBar from "./SearchBar.js";
+import Footer from './Footer.js';
 
 class DogFriendly extends React.Component {
   componentDidMount = () => {
@@ -41,6 +42,9 @@ class DogFriendly extends React.Component {
             <SearchBar />
           </div>
           <div className="row mt-5">{this.showDogFriendly()}</div>
+        </div>
+        <div>
+          <Footer/>
         </div>
       </div>;
   }

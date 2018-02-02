@@ -1,9 +1,11 @@
 import React from "react";
-import Navigation from "./Navigation.js";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import * as Actions from "../actions/index.js";
+
 import FileField from "./FileField.js";
-import { connect } from "react-redux";
+import Navigation from "./Navigation.js";
+import Footer from './Footer.js';
 
 class AddGallery extends React.Component {
   renderForm = field => {
@@ -11,9 +13,10 @@ class AddGallery extends React.Component {
     const className = `form-group ${touched && error ? "has-error" : ""}`;
     return (
       <fieldset className={className}>
-        <label>{label}</label>
+        <label className='label-control'>{label}</label>
         <div>
-          <input {...input} type={type} />
+          <input {...input} type={type}
+          className='form-control' />
           {touched &&
             error && <div className="alert alert-danger">{error}</div>}
         </div>
@@ -27,31 +30,22 @@ class AddGallery extends React.Component {
     });
   };
   render() {
-    return (
-      <div>
+    return <div>
         <Navigation />
-        <div>
-          <form onSubmit={this.props.handleSubmit(this.submitForm)}>
-            <Field
-              type="picture"
-              name="picture"
-              label="Picture"
-              component={FileField}
-            />
-            <Field
-              name="name"
-              type="text"
-              label="Your pet's name"
-              component={this.renderForm}
-            />
-
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
-          </form>
+        <div className="container">
+          <h2 className="text-center mt-5">Gallery</h2>
+          <div className="col-md-6 col-md-offset-3 mx-auto">
+            <form onSubmit={this.props.handleSubmit(this.submitForm)}>
+              <Field type="picture" name="picture" label="Picture" component={FileField} />
+              <Field name="name" type="text" label="Your pet's name" component={this.renderForm} />
+              <button className="btn btn-primary" type="submit">Submit</button>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+        <div>
+          <Footer />
+        </div>
+      </div>;
   }
 }
 function validate(values) {

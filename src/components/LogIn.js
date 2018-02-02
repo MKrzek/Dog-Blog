@@ -13,7 +13,7 @@ class LogIn extends React.Component {
       <fieldset className={className}>
         <label className="control-label">{field.label}</label>
         <div>
-          <input {...field.input} type={field.type} />
+          <input  className='form-control' {...field.input} type={field.type} />
         </div>
         <div className="help-block">
           {field.meta.touched ? field.meta.error : ""}
@@ -38,25 +38,14 @@ class LogIn extends React.Component {
   }
   render() {
     const { handleSubmit } = this.props;
-    return (
-      <div className="container text-center">
-        <div className="col-md-12 col-md-offset-3">
+    return <div className="container text-center">
+        <div className="col-md-6 col-md-offset-3 mx-auto">
           <h2 className="text-center">Log In</h2>
 
           {this.renderAuthenticationError()}
           <form onSubmit={handleSubmit(this.LogIn)}>
-            <Field
-              name="email"
-              component={this.renderLogin}
-              label="Email"
-              type="text"
-            />
-            <Field
-              name="password"
-              component={this.renderLogin}
-              label="Password"
-              type="password"
-            />
+            <Field name="email" component={this.renderLogin} label="Email" type="text" />
+            <Field name="password" component={this.renderLogin} label="Password" type="password" />
             <button type="submit" className="btn btn-primary">
               Log In
             </button>
@@ -67,8 +56,7 @@ class LogIn extends React.Component {
             </div>
           </form>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 function validate(values) {

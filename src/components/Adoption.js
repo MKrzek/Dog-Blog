@@ -39,19 +39,19 @@ class Adoption extends React.Component {
       <div>
         <Navigation />
         <div className='container mt-3 mb-4'>
-           <div className='row'>
-          <h2>Adopt a dog</h2>
+           <div className='row justify-content-center'>
+          <h2 className='text-center'>Adopt a dog</h2>
           <Link to="/addForAdoption">Add a dog</Link>
         </div>
         
-        <div className='row'>{this.showData()}</div>
+        <div className='row justify-content-center mt-4'>{this.showData()}</div>
         <div>
           <DogModal  modalIsOpen={this.props.modalIsOpen}
                      selectedDog={this.props.selectedDog}
                      onRequestClose={this.closeModal}/>
         </div>
         </div>
-        <div>
+        <div className='mb-1'>
           <Footer />
         </div>
       </div>

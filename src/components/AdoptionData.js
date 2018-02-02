@@ -19,7 +19,7 @@ class AdoptionData extends React.Component {
     console.log("reserve", this.props.dog.adoption);
     const { name, breed, picture, adoption } = this.props.dog;
     return (
-      <div className="col-3 card ml-1 mr-1 mb-4 text-center">
+      <div className="col-md-4 card ml-1 mr-1 mb-4 text-center">
         <div className="mt-4">
             <PreviewPicture pictureUrl={picture} />
         </div>
