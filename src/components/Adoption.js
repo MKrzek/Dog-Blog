@@ -57,9 +57,8 @@ class Adoption extends React.Component {
             />
           </div>
         </div>
-        <div>
           <Footer />
-        </div>
+       
       </div>
     );
   }

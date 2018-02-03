@@ -140,7 +140,12 @@ body {
 
 
 .container {
-  min-height: 76vh;
+  min-height: 78vh;
+}
+@media (min-width: 1445px){
+  .container{
+    min-height: 92vh;
+  }
 }
 .parentGoogleMap {
   position: relative;
