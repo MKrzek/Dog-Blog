@@ -1,21 +1,22 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom';
 import * as Actions from "../actions/index.js";
 
 class SignUp extends React.Component {
   renderSignUp = field => {
-    const { meta: { touched, error } } = field;
-    const className = `form-group${touched && error ? "has-danger" : ""}`;
-    return (
-      <fieldset className={className}>
-        <label className="control-label">{field.label}</label>
+    const {input, label, type, meta: { touched, error } } = field;
+    const className = `form-group${touched && error ? "has-error" : ""}`;
+    return <fieldset className={className}>
+        <label className="control-label">{label}</label>
         <div>
-          <input className='form-control' {...field.input} type={field.type} />
+          <input className="form-control" {...input} type={type} />
         </div>
-        <div className="help-block">{touched ? error : ""}</div>
-      </fieldset>
-    );
+        {touched && error && <div className="alert alert-danger">
+              {error}
+            </div>}
+      </fieldset>;
   };
   SignUp = values => {
     this.props.SignUpUser(values);
@@ -33,39 +34,23 @@ class SignUp extends React.Component {
   render() {
     const { handleSubmit } = this.props;
 
-    return (
-      <div className="container">
-        <div className='col-md-6 col-md-offset-3 mx-auto'>
+    return <div className="container">
+        <div className="col-md-6 col-md-offset-3 mx-auto">
           <h2 className="text-center"> Sign Up</h2>
 
           {this.renderAuthenticationError()}
 
           <form onSubmit={handleSubmit(this.SignUp)}>
-            <Field
-              name="email"
-              component={this.renderSignUp}
-              label="Email"
-              type="email"
-            />
-            <Field
-              name="password"
-              component={this.renderSignUp}
-              label="Password"
-              type="password"
-            />
-            <Field
-              name="confirmPassword"
-              component={this.renderSignUp}
-              label="Confirm password"
-              type="password"
-            />
-            <button type="submit" className="btn btn-primary">
-              Sign Up
-            </button>
+            <Field name="email" component={this.renderSignUp} label="Email" type="email" />
+            <Field name="password" component={this.renderSignUp} label="Password" type="password" />
+            <Field name="confirmPassword" component={this.renderSignUp} label="Confirm password" type="password" />
+            <button type="submit" className="btn btn-primary">Sign Up</button>
+            <Link to="/" className="btn btn-primary">
+              Already a member yet? Log in
+            </Link>
           </form>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 function validate(values) {

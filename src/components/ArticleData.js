@@ -1,23 +1,20 @@
 import React from "react";
 import PreviewPicture from "./PreviewPicture.js";
-import {connect} from 'react-redux';
-import Navigation from './Navigation.js';
-import Footer from './Footer.js';
+import { connect } from "react-redux";
+import Navigation from "./Navigation.js";
+import Footer from "./Footer.js";
 
 class ArticleData extends React.Component {
-
-  
   render() {
-    const params=this.props.match.params.id;
-    console.log ('params', params)
+    const params = this.props.match.params.id;
+    console.log("params", params);
     const { title, content, picture } = this.props.article;
-    return <div>
+    return (
+      <div>
         <Navigation />
-        <div className="card articlePreviewCard">
+        <div className="card cardScroll">
           <div>
-            <h4 className="text-justify mt-4 ml-2 mr-2 mb-3 articlePreview">
-              {title}
-            </h4>
+            <h4 className="text-justify mt-4 ml-2 mr-2 mb-3">{title}</h4>
           </div>
           <div>
             <div className="ml-2 mr-2">{content}</div>
@@ -28,12 +25,12 @@ class ArticleData extends React.Component {
         </div>
         <Footer />
       </div>
+    );
   }
 }
-function mapStateToProps(state){
-  
+function mapStateToProps(state) {
   return {
     article: state.sendDataToArticleData
-  }
+  };
 }
-export default connect (mapStateToProps, null) (ArticleData)
+export default connect(mapStateToProps, null)(ArticleData);

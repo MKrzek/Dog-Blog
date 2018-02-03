@@ -6,7 +6,7 @@ import * as Actions from "../actions/index.js";
 import Navigation from "./Navigation.js";
 import VetDisplay from "./VetDisplay.js";
 import GoogleMap from "./GoogleMap.js";
-import Footer from './Footer.js';
+import Footer from "./Footer.js";
 import _ from "lodash";
 
 class Vets extends React.Component {
@@ -20,41 +20,47 @@ class Vets extends React.Component {
       }
     }
     return _.map(this.props.vets, vet => {
-      return <VetDisplay vet={vet} key={vet.key} vetLocation={this.vetLocation} />;
+      return (
+        <VetDisplay vet={vet} key={vet.key} vetLocation={this.vetLocation} />
+      );
     });
   };
 
-  vetLocation=(address)=>{
-    this.props.vetLocation(address)
-  }
-
+  vetLocation = address => {
+    this.props.vetLocation(address);
+  };
 
   render() {
-    
-    return <div>
+    return (
+      <div>
         <Navigation />
-        <div className="container">
+        <div className="container mb-4">
           <div className="row justify-content-center">
             <h2 className="mb-5 mt-4 ml-2">List of vets</h2>
-            <Link className="btn btn-primary btn-lg mt-4 ml-10" to="/addVet">Add a vet</Link>
+            <Link className="btn btn-primary btn-lg mt-4 ml-10" to="/addVet">
+              Add a vet
+            </Link>
           </div>
-          <div className=" row justify-content-center mt-3">{this.showVets()}</div>
-          <div className='justify-content-center mx-auto text-center ml-3 parentGoogleMap'>
-            <GoogleMap vetAddress={this.props.vetAddress[2]} 
-                        lat={this.props.vetAddress[0]}
-                         lng={this.props.vetAddress[1]} />
-          
+          <div className=" row justify-content-center mt-3">
+            {this.showVets()}
           </div>
+          <div className="justify-content-center mx-auto text-center ml-3 parentGoogleMap">
+            <GoogleMap
+              vetAddress={this.props.vetAddress[2]}
+              lat={this.props.vetAddress[0]}
+              lng={this.props.vetAddress[1]}
+            />
           </div>
-        <div className='footerVet'>
-          <Footer/>
         </div>
-       
+        <div className="footerVet">
+          <Footer />
+        </div>
       </div>
+    );
   }
 }
 function mapStateToProps(state) {
-  console.log ('address w vetach', state.vetLocation)
+  console.log("address w vetach", state.vetLocation);
   return {
     vets: state.displayVets,
     vetAddress: state.vetLocation

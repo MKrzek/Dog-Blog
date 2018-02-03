@@ -58,6 +58,7 @@ class App extends React.Component {
             path="/signup"
             component={SignUp}
           />
+          
           <PublicRoute
             authenticated={this.props.authenticated}
             exact

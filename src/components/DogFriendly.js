@@ -30,14 +30,12 @@ class DogFriendly extends React.Component {
   render() {
     return <div>
         <Navigation />
-        <div className="container">
+        <div className="container mb-4">
           <div className=" d-flex flex-column">
            
             <Link to="/addDogFriendly" className="btn btn-lg btn-primary mt-5 ">
               Add Dog Friendly Places
             </Link>
-            
-          
            <div className='mt-5 mb-5'>
             <SearchBar />
           </div>

@@ -7,17 +7,18 @@ import * as Actions from "../actions/index.js";
 class LogIn extends React.Component {
   renderLogin(field) {
     const className = `form-group${
-      field.meta.touched && field.meta.error ? "has-danger" : ""
-    }`;
+      field.meta.touched && field.meta.error ? "has-error" : ""}`;
     return (
       <fieldset className={className}>
         <label className="control-label">{field.label}</label>
         <div>
           <input  className='form-control' {...field.input} type={field.type} />
         </div>
-        <div className="help-block">
-          {field.meta.touched ? field.meta.error : ""}
-        </div>
+       {field.meta.touched &&
+            field.meta.error && (
+              <div className="alert alert-danger">{field.meta.error}</div>
+            )}
+        
       </fieldset>
     );
   }

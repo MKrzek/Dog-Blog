@@ -5,23 +5,21 @@ import * as Actions from "../actions/index.js";
 import _ from "lodash";
 import Navigation from "./Navigation.js";
 import AdoptionData from "./AdoptionData.js";
-import DogModal from './DogModal.js';
-import Footer from './Footer.js';
+import DogModal from "./DogModal.js";
+import Footer from "./Footer.js";
 
 class Adoption extends React.Component {
-
-
-  componentDidMount=()=> {
+  componentDidMount = () => {
     this.props.displayAdoption();
-  }
+  };
 
-   onDogSelect=(dog)=>{
-   this.props.openModal(dog)
-   }
-   
-   closeModal=()=>{
-     this.props.closeModal()
-   }
+  onDogSelect = dog => {
+    this.props.openModal(dog);
+  };
+
+  closeModal = () => {
+    this.props.closeModal();
+  };
 
   showData = () => {
     if (this.props.adoption) {
@@ -31,27 +29,35 @@ class Adoption extends React.Component {
     }
 
     return _.map(this.props.adoption, dog => {
-      return <AdoptionData dog={dog} key={dog.key} onDogSelect={this.onDogSelect} />;
+      return (
+        <AdoptionData dog={dog} key={dog.key} onDogSelect={this.onDogSelect} />
+      );
     });
   };
   render() {
     return (
       <div>
         <Navigation />
-        <div className='container mt-3 mb-4'>
-           <div className='row justify-content-center'>
-          <h2 className='text-center'>Adopt a dog</h2>
-          <Link to="/addForAdoption" className='btn btn-lg ml-3 btn-primary'>Add a dog</Link>
+        <div className="container mt-3 mb-4">
+          <div className="row justify-content-center">
+            <h2 className="text-center">Adopt a dog</h2>
+            <Link to="/addForAdoption" className="btn btn-lg ml-3 btn-primary">
+              Add a dog
+            </Link>
+          </div>
+
+          <div className="row justify-content-center mt-4">
+            {this.showData()}
+          </div>
+          <div>
+            <DogModal
+              modalIsOpen={this.props.modalIsOpen}
+              selectedDog={this.props.selectedDog}
+              onRequestClose={this.closeModal}
+            />
+          </div>
         </div>
-        
-        <div className='row justify-content-center mt-4'>{this.showData()}</div>
         <div>
-          <DogModal  modalIsOpen={this.props.modalIsOpen}
-                     selectedDog={this.props.selectedDog}
-                     onRequestClose={this.closeModal}/>
-        </div>
-        </div>
-        <div className='mb-1'>
           <Footer />
         </div>
       </div>

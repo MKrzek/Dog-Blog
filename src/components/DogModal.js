@@ -8,7 +8,7 @@ export default class DogModal extends React.Component {
     if (!this.props.selectedDog) {
       return <div />;
     } else {
-      const { name, picture, userUiD, key} = this.props.selectedDog;
+      const { name, picture, userUiD} = this.props.selectedDog;
 
       const customStyle = {
         overlay: {

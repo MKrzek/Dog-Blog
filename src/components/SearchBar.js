@@ -10,7 +10,7 @@ class  SearchBar extends React.Component{
         return <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
             <div>
                 <div className='row justify-content-center'>
-              <input {...input} type={type} placeholder={label} className='col-md-7 form-control text-lowercase' />
+              <input {...input} type={type} placeholder={label} className='col-7 form-control text-lowercase searchBar' />
               <button type="submit" className="btn bmd-btn-icon">
                 <i className="material-icons">search</i>
               </button>
