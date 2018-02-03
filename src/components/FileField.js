@@ -22,7 +22,7 @@ export default class FileField extends React.Component {
   };
 
   render() {
-    const { input, meta: { touched, error } } = this.props;
+    const { input} = this.props;
     delete input.value;
     return (
       <div>
