@@ -11,7 +11,6 @@ class HomeGallery extends React.Component{
   componentDidMount(){
     this.props.displayGallery()
   }
-
 renderGallery=()=>{
   
   if (this.props.photos) {
@@ -24,7 +23,6 @@ renderGallery=()=>{
           <HomeGalleryData dog={photo} key={photo.key} />
           </div>
       
-  
   })
 }
 

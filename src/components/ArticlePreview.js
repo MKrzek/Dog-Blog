@@ -15,19 +15,21 @@ class ArticlePreview extends React.Component {
 
   render() {
     const {title, picture} = this.props.article;
-    return <div className="card ml-3 mb-3 mt-3">
-        <div className="text-center">
-          <h4 style={{ position: "absolute", top: '40%'}} className="titlePreview mt-2 ml-2 mr-2 text-uppercase justify-content-center">
+    return <Link to={`/articleData/${this.props.article.key}`} onClick={this.handleClick}>
+       <div className="card ml-3 mb-3 mt-3 previewCard">
+        <div>
+          <h4 className="titlePreview text-center mx-auto  text-uppercase">
             {title}
           </h4>
         </div>
-        <Link to={`/articleData/${this.props.article.key}`} onClick={this.handleClick}>
+        
           <div className="picturePreview">
             <PreviewPicture pictureUrl={picture} />
           </div>
-        </Link>
+         </div>
         <div />
-      </div>;
+         </Link>
+      
   }
 }
 

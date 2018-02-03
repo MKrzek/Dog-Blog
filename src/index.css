@@ -13,14 +13,9 @@ body {
   width: '300px';
 }
 .vetItem{
-  width: 250px;
- 
-  
+  width: 250px;  
 }
-.vetElement{
-  display:flex;
-  flex-direction: row;
-}
+
 .friendlyItem{
   /* width: 150px; */
   height: 200px;  
@@ -113,16 +108,23 @@ body {
 }
 
 .titlePreview{
-   color: white;
-   font-weight: bold;
-   /* visibility: hidden; */
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 40%;
+    height: 60%;
    
+    opacity: 0
+}
+.previewCard:hover{
+      opacity: 0.75;
 }
 
-.picturePreview:hover{
-    opacity: 0.75; 
-    
+.titlePreview:hover{
+    opacity: 1
 }
+
+
 
 /* Navbar */
 
@@ -145,7 +147,10 @@ body{
 }
 }
 .container{
-    min-height: 82.5vh
+    height: 100%;
+}
+.articlePreviewCard{
+    height: 100%;
 }
 
 

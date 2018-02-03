@@ -8,11 +8,11 @@ export default class MyAccount extends React.Component{
         return <div>
             <Navigation />
             <div className="container">
-              <div className='mt-5 mb-4 d-flex' style={{ backgroundColor: "white", height: "10vh" }}>
+              <div className='mt-5 mb-4 d-flex' style={{ backgroundColor: "white", height: "9vh" }}>
                 <h2 className="mx-auto align-self-center">Messages</h2>
               </div>
               <Messages />
-              <div className='mt-5 mb-4 d-flex' style={{ backgroundColor: "white", height: "10vh" }}>
+              <div className='mt-5 mb-4 d-flex' style={{ backgroundColor: "white", height: "9vh" }}>
                 <h2 className=" mx-auto align-self-center">Articles</h2>
               </div>
              
