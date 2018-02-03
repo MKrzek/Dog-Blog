@@ -2,6 +2,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
+}
+html{
+    height: 100%
 }
 
 #signout {
@@ -147,11 +151,19 @@ body{
 }
 }
 .container{
-    height: 100%;
+    min-height: 76vh;
+}      
+.parentGoogleMap{
+    position: relative;
+   
+    height: 600px; 
+    margin-bottom: 0;
+    width: 80%;
 }
-.articlePreviewCard{
-    height: 100%;
+.footerVet{
+    margin-top: 5%;
 }
+
 
 
 

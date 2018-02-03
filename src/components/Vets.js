@@ -39,15 +39,17 @@ class Vets extends React.Component {
             <Link className="btn btn-primary btn-lg mt-4 ml-10" to="/addVet">Add a vet</Link>
           </div>
           <div className=" row justify-content-center mt-3">{this.showVets()}</div>
-          <div className='mb-4 justify-content-center'>
+          <div className='justify-content-center mx-auto text-center ml-3 parentGoogleMap'>
             <GoogleMap vetAddress={this.props.vetAddress[2]} 
                         lat={this.props.vetAddress[0]}
                          lng={this.props.vetAddress[1]} />
+          
           </div>
-        </div>
-        
+          </div>
+        <div className='footerVet'>
           <Footer/>
-        
+        </div>
+       
       </div>
   }
 }

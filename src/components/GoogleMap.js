@@ -39,12 +39,11 @@ export  class GoogleMap extends React.Component {
            }
             
         
-           const style = { width: "60%", height: "50%", position: "relative" };
+           const style = { width: "100%", height: "100%", position: "relative"};
         
           
-           return <Map className={'map'} google={this.props.google} zoom={18} style={style} onClick={this.onMapClick}
+           return <Map google={this.props.google} zoom={18} style={style} onClick={this.onMapClick}
                  centerAroundCurrentLocation={true} 
-                 
                  center={{ lat: lat, lng: lng }}>
                 <Marker title={this.props.vetAddress} 
                         name={this.props.vetAddress} 
@@ -53,7 +52,8 @@ export  class GoogleMap extends React.Component {
                <InfoWindow visible={this.state.showingInfoWindow} marker={this.state.activeMarker}>
                  <h1>{this.props.vetAddress}</h1>
                </InfoWindow>
-             </Map>;
+             </Map>
+            
          }
        }
  

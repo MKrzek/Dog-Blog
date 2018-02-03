@@ -65,11 +65,13 @@ class AddDogFriendly extends React.Component {
               <button className='btn btn-primary btn-lg' type="submit">Submit</button>
             </form>
           </div>
-        </div>
+          </div>
         <div>
+        
           <Footer />
-        </div>
-      </div>;
+       </div>
+     
+      </div>
   }
 }
 
