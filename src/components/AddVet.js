@@ -17,7 +17,7 @@ class AddVet extends React.Component {
         <div>
           <textarea
             {...field.input}
-            placeholder={field.label}
+           
             type={field.type}
             className='form-control'
           />

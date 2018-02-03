@@ -33,7 +33,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  responsive: [{breakpoint: 450, settings: {slidesToShow: 1}}],
+  responsive: [{breakpoint: 450, settings: {slidesToShow: 1}}, {breakpoint: 800, settings:{slidesToShow: 2}}],
   slidesToShow: 3,
   slidesToScroll: 1}
 

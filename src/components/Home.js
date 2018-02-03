@@ -32,7 +32,7 @@ class Home extends React.Component {
         <div className="container">
           <div className="row justify-content-center">
             <h2 className="mb-2 mt-4 ml-2 text-center">Latest Articles</h2>
-            <Link className="btn btn-primary btn-lg mt-4 ml-4" to="/newArticle">
+            <Link className="btn btn-primary btn-lg mt-4 ml-3" to="/newArticle">
               Add a new Article
             </Link>
           </div>

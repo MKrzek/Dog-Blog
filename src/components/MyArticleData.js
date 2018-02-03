@@ -11,15 +11,15 @@ export default class MyArticleData extends React.Component {
   render() {
     const { title, picture } = this.props.myArticle;
     return (
-      <div className=" card mr-2 mt-3 ml-2 mb-4">
-        <div>
-          <h4 className="text-center mt-3 mb-3">{title}</h4>
-        </div>
+      <div className="col-md-5 ml-2 card  mt-3  mb-4">
         
-        <div className='text-center'>
+          <h4 style={{height: "6vh"}} className="text-center mt-4">{title}</h4>
+        
+        
+        <div className='text-center mt-3 mb-2'>
           <PreviewPicture pictureUrl={picture} />
         </div>
-        <button onClick={this.handleClick} className='btn btn-alert mt-3 mb-4'>Remove This Article</button>
+        <button onClick={this.handleClick} className='btn btn-warning btn-lg mt-3 mb-4'>Remove This Article</button>
       </div>
     );
   }

@@ -12,8 +12,8 @@ class AddDogFriendly extends React.Component {
     return (
       <fieldset className={`form-group${touched && error ? "has-error" : ""}`}>
         <div>
-          
-          <textarea {...input} type={type} placeholder={label} 
+          <label className='label-control'>{label}</label>
+          <textarea {...input} type={type} 
              className='form-control'/>
           {touched &&
             error && <div className="alert alert-danger">{error}</div>}
@@ -29,14 +29,12 @@ class AddDogFriendly extends React.Component {
     return (
       <fieldset className={className}>
         <div>
-          
-          <select {...input} type={type} 
-           >
+          <label className='control-label'>{label}</label>
+             
+          <select {...input} type={type} className='form-control'>
             <option />
             {tags.map(tag => (
-              <option value={tag} key={tag}>
-                {tag}{" "}
-              </option>
+              <option value={tag} key={tag}>{tag}</option>
             ))}
           </select>
           {touched &&

@@ -33,11 +33,10 @@ class MyArticles extends React.Component {
   render() {
     return (
       <div>
-        {this.props.myArticles ? (
-          <div>{this.showMyArticles()}</div>
-        ) : (
-          <h3>'You have no articles' </h3>
-        )}
+        {this.props.myArticles ? 
+        (<div className='row justify-content-center'>{this.showMyArticles()}</div>) 
+          : 
+          (<h3>'You have no articles' </h3>)}
       </div>
     );
   }

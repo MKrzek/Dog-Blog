@@ -6,20 +6,22 @@ import Footer from './Footer.js';
 export default class MyAccount extends React.Component{
     render(){
         return <div>
-                <Navigation/>
-                <div className='container'>
-                <div>
-                  <h2 className='text-center mt-2 mb-2'>Messages</h2>
-                <Messages/>
-               </div>
-               <div>
-                   <h2 className='text-center mt-2 mb-2'>Articles</h2>
-                   <MyArcticles/>  
-                </div>
-                </div>
-                <div>
-                    <Footer/>
-                </div>
-               </div>
+            <Navigation />
+            <div className="container">
+              <div className='mt-5 mb-4 d-flex' style={{ backgroundColor: "white", height: "10vh" }}>
+                <h2 className="mx-auto align-self-center">Messages</h2>
+              </div>
+              <Messages />
+              <div className='mt-5 mb-4 d-flex' style={{ backgroundColor: "white", height: "10vh" }}>
+                <h2 className=" mx-auto align-self-center">Articles</h2>
+              </div>
+             
+              <MyArcticles />
+              
+            </div>
+            <div>
+              <Footer />
+            </div>
+          </div>;
     }
 }

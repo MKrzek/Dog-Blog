@@ -27,8 +27,8 @@ class Messages extends React.Component{
         })
     }
     render(){
-        return<div className='container'>
-                {this.props.messages ? (<div className='row  mt-3 justify-content-center'>{this.showMessages()}</div>) : (<div className='alert alert-info'>'You have no messages'</div>)}
+        return<div>
+                {this.props.messages ? (<div className='row mt-3 justify-content-center'>{this.showMessages()}</div>) : (<div className='alert alert-info'>'You have no messages'</div>)}
               </div>
     }
 }

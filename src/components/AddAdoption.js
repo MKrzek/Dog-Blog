@@ -59,7 +59,7 @@ class AddAdoption extends React.Component {
               component={this.renderField}
               
             />
-            <button type="submit">Submit</button>
+            <button className='btn btn-primary btn-lg' type="submit">Submit</button>
           </form>
           </div>
         </div>

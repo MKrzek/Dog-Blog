@@ -34,7 +34,7 @@ class Vets extends React.Component {
     return <div>
         <Navigation />
         <div className="container">
-          <div className="row">
+          <div className="row justify-content-center">
             <h2 className="mb-5 mt-4 ml-2">List of vets</h2>
             <Link className="btn btn-primary btn-lg mt-4 ml-10" to="/addVet">Add a vet</Link>
           </div>
