@@ -2,9 +2,11 @@
   "name": "dog-blog",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mkrzek.github.io/Dog-Blog",
   "dependencies": {
     "firebase": "^4.8.1",
     "geocoder": "^0.2.3",
+    "gh-pages": "^1.1.0",
     "google-maps-react": "^1.1.2",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
@@ -23,6 +25,8 @@
     "sweetalert": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
