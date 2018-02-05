@@ -59,11 +59,11 @@ class LogIn extends React.Component {
               label="Password"
               type="password"
             />
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className=" btn btn-primary">
               Log In
             </button>
             <div>
-              <Link to="/signup" className="btn btn-primary">
+              <Link to="/signup" className=" btn btn-primary mt-2">
                 Not a member yet? Register now
               </Link>
             </div>

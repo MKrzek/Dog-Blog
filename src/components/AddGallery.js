@@ -54,7 +54,7 @@ function validate(values) {
     errors.name = "Please enter your pet's name";
   }
   if (!values.picture) {
-    errors.picture = "Please attached a picture";
+    errors.picture = "Please attach a picture";
   }
 
   return errors;

@@ -45,9 +45,11 @@ class SignUp extends React.Component {
             <Field name="password" component={this.renderSignUp} label="Password" type="password" />
             <Field name="confirmPassword" component={this.renderSignUp} label="Confirm password" type="password" />
             <button type="submit" className="btn btn-primary">Sign Up</button>
-            <Link to="/" className="btn btn-primary">
+            <div>
+            <Link to="/" className="btn btn-primary mt-2">
               Already a member yet? Log in
             </Link>
+            </div>
           </form>
         </div>
       </div>;
