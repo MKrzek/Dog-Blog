@@ -36,8 +36,8 @@ class SignUp extends React.Component {
 
     return <div className="container">
         <div className="col-md-6 col-md-offset-3 mx-auto">
-          <h2 className="text-center"> Sign Up</h2>
-
+         <h1 className='text-center mb-4'>Dogether - blog about dogs</h1>
+          <h2 className="text-center">Sign Up</h2>
           {this.renderAuthenticationError()}
 
           <form onSubmit={handleSubmit(this.SignUp)}>

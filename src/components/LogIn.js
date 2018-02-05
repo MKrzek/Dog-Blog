@@ -7,18 +7,18 @@ import * as Actions from "../actions/index.js";
 class LogIn extends React.Component {
   renderLogin(field) {
     const className = `form-group${
-      field.meta.touched && field.meta.error ? "has-error" : ""}`;
+      field.meta.touched && field.meta.error ? "has-error" : ""
+    }`;
     return (
       <fieldset className={className}>
         <label className="control-label">{field.label}</label>
         <div>
-          <input  className='form-control' {...field.input} type={field.type} />
+          <input className="form-control" {...field.input} type={field.type} />
         </div>
-       {field.meta.touched &&
-            field.meta.error && (
-              <div className="alert alert-danger">{field.meta.error}</div>
-            )}
-        
+        {field.meta.touched &&
+          field.meta.error && (
+            <div className="alert alert-danger">{field.meta.error}</div>
+          )}
       </fieldset>
     );
   }
@@ -39,14 +39,26 @@ class LogIn extends React.Component {
   }
   render() {
     const { handleSubmit } = this.props;
-    return <div className="container text-center">
+    return (
+      <div className="container text-center">
         <div className="col-md-6 col-md-offset-3 mx-auto">
+          <h1 className="text-center mb-4">Dogether - blog about dogs</h1>
           <h2 className="text-center">Log In</h2>
 
           {this.renderAuthenticationError()}
           <form onSubmit={handleSubmit(this.LogIn)}>
-            <Field name="email" component={this.renderLogin} label="Email" type="text" />
-            <Field name="password" component={this.renderLogin} label="Password" type="password" />
+            <Field
+              name="email"
+              component={this.renderLogin}
+              label="Email"
+              type="text"
+            />
+            <Field
+              name="password"
+              component={this.renderLogin}
+              label="Password"
+              type="password"
+            />
             <button type="submit" className="btn btn-primary">
               Log In
             </button>
@@ -57,7 +69,8 @@ class LogIn extends React.Component {
             </div>
           </form>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 function validate(values) {
