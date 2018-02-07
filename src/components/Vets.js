@@ -45,11 +45,7 @@ class Vets extends React.Component {
             {this.showVets()}
           </div>
           <div className="justify-content-center mx-auto text-center ml-3 parentGoogleMap">
-            <GoogleMap
-              vetAddress={this.props.vetAddress[2]}
-              lat={this.props.vetAddress[0]}
-              lng={this.props.vetAddress[1]}
-            />
+            <GoogleMap vetAddress={this.props.vetAddress} />
           </div>
         </div>
         <div className="footerVet">
@@ -60,7 +56,6 @@ class Vets extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  console.log("address w vetach", state.vetLocation);
   return {
     vets: state.displayVets,
     vetAddress: state.vetLocation

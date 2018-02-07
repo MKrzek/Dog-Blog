@@ -1,5 +1,4 @@
 import React from "react";
-import geocoder from "geocoder";
 
 export default class VetDisplay extends React.Component {
   handleClick = () => {
@@ -9,22 +8,9 @@ export default class VetDisplay extends React.Component {
       this.props.vet.streetNumber.toString() +
       " " +
       this.props.vet.city.toString();
-    console.log(address);
-
-    geocoder.geocode(address, (error, coordinates) => {
-      const data = Object.assign({}, coordinates);
-      const data2 = Object.assign({}, data.results);
-      const data3 = Object.assign({}, data2[0]);
-      const data4 = Object.assign({}, data3.geometry);
-      const location = Object.assign({}, data4.location);
-
-      const lat = location.lat;
-      const lng = location.lng;
-      console.log(lat, lng);
-      const geoLocation = [lat, lng, address];
-      this.props.vetLocation(geoLocation);
-    });
-  };
+    console.log(typeof address );
+      this.props.vetLocation(address);
+  }
 
   render() {
     const { vet, streetName, streetNumber, www, phone, city } = this.props.vet;

@@ -147,14 +147,12 @@ body {
     min-height: 92vh;
   }
 }
-.parentGoogleMap {
-  position: relative;
 
-  height: 600px;
-  margin-bottom: 0;
-  width: 80%;
-}
 
 .cardScroll {
   overflow: scroll;
+}
+.map{
+  height: 500px;
+  width: 80%;
 }

@@ -32,6 +32,7 @@ export default class FileField extends React.Component {
               type="file"
               className="form-control"
               {...input}
+              
               onChange={event => {
                 this.displayPicture(event);
               }}
