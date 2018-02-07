@@ -33,7 +33,6 @@ class Messages extends React.Component{
     }
 }
 function mapStateToProps(state){
-    console.log (state.displayMessages)
     return {
         messages: state.displayMessages
     }

@@ -8,7 +8,7 @@ export default class VetDisplay extends React.Component {
       this.props.vet.streetNumber.toString() +
       " " +
       this.props.vet.city.toString();
-    console.log(typeof address );
+    
       this.props.vetLocation(address);
   }
 

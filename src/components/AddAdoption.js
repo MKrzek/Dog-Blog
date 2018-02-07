@@ -24,7 +24,7 @@ class AddAdoption extends React.Component {
   };
 
   submitForm = values => {
-    console.log("adoption values", values);
+    
     this.props.addAdoption(values, () => {
       this.props.history.push("/adoption");
     });
